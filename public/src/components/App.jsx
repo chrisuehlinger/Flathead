@@ -12,7 +12,8 @@ let App = React.createClass({
   },
 
   _onChange() {
-  this.setState(SuiteStore.getAll());
+    console.log('Change!',SuiteStore.getAll());
+    this.setState(SuiteStore.getAll());
   },
 
   componentDidMount() {

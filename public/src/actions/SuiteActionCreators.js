@@ -10,12 +10,11 @@ module.exports = {
     });
   },
 
-  clearList: function() {
-    console.warn('clearList action not yet implemented...');
-  },
-
-  completeTask: function(task) {
-    console.warn('completeTask action not yet implemented...');
+  replaceAllSuites: function(suites) {
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.REPLACE_ALL_SUITES,
+      suites: suites
+    });
   }
 
 };

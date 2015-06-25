@@ -4,14 +4,7 @@ module.exports = {
 
   ActionTypes: keyMirror({
     ADD_TASK: null,
-    ADD_STUDENT:null,
-    REPLACE_ALL_STUDENTS:null,
-    REPLACE_ALL_COLUMNS:null,
-    SET_ASCENDING_SORT:null,
-    SET_DESCENDING_SORT:null,
-    SET_MIN_SCORE:null,
-    SET_MAX_SCORE:null,
-    SET_MIN_OVERDUE:null
+    REPLACE_ALL_SUITES: null
   }),
 
   ActionSources: keyMirror({

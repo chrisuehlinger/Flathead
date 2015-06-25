@@ -11,6 +11,11 @@ function addItem(suite) {
   _data.push(suite);
 }
 
+function replaceAll(suites){
+  console.log('Replacing!', suites);
+  _data = suites;
+}
+
 // Facebook style store creation.
 let SuiteStore = assign({}, BaseStore, {
 
@@ -20,6 +25,8 @@ let SuiteStore = assign({}, BaseStore, {
       suites: _data
     };
   },
+  
+  
 
   // register store with dispatcher, allowing actions to flow through
   dispatcherIndex: AppDispatcher.register(function(payload) {
@@ -29,6 +36,13 @@ let SuiteStore = assign({}, BaseStore, {
       case Constants.ActionTypes.ADD_SUITE:
         if (action.suite) {
           addItem(action.suite);
+          SuiteStore.emitChange();
+        }
+        break;
+        
+      case Constants.ActionTypes.REPLACE_ALL_SUITES:
+        if (action.suites) {
+          replaceAll(action.suites);
           SuiteStore.emitChange();
         }
         break;

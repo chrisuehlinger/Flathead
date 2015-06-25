@@ -15,10 +15,10 @@ let SuiteEditor = React.createClass({
     if(this.props.suite){
       return (
         <div className="suite-editor">
-        <div>Name: {this.props.suite.name}</div>
+        <label>Name: <input type="text" value={this.props.suite.name} /></label>
           Routes:
           <ul className="route-list">
-          { this.props.suite.routes.map((route) => <li key={route.request.url}> <RouteEditor route={route} /></li>)}
+            { this.props.suite.routes.map((route) => <li key={route.request.url}> <RouteEditor route={route} /></li>)}
           </ul>
         </div>
       );

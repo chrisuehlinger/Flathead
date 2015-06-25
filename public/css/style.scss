@@ -1,8 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
+}
+
+.mui-icon-add-item:before {
+  content:"add";
+}
+
+.mui-icon-upload:before {
+  content:"file_upload";
 }
 
 .wrapper {
@@ -47,12 +57,12 @@ body {
           }
           
           .suite-active-indicator {
-//            display: block;
-//            background: lime;
-//            height: 16px;
-//            width: 16px;
-//            border-radius:50%;
-//            box-shadow: 0px 0px 10px lime;
+            display: block;
+            background: lime;
+            height: 16px;
+            width: 16px;
+            border-radius:50%;
+            box-shadow: 0px 0px 10px lime;
             margin-left: auto;
             
           }

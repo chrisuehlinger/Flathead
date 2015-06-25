@@ -1,7 +1,8 @@
 const React = require('react');
 const mui = require('material-ui');
+const SuiteActionCreators = require('../actions/SuiteActionCreators');
 
-let {Toggle} = mui;
+let {Toolbar, ToolbarGroup, ToolbarTitle, IconButton} = mui;
 
 let SuiteList = React.createClass({
   getDefaultProps: function(){
@@ -9,8 +10,9 @@ let SuiteList = React.createClass({
       suites:[]
     };
   },
-
-  componentDidMount() {
+  
+  _createNewSuite(){
+    SuiteActionCreators.createNewSuite();
   },
   
   _selectSuite(suite){
@@ -21,7 +23,20 @@ let SuiteList = React.createClass({
     console.log(this.props.suites);
     return (
       <div className="suite-list-pane">
-      <div className="suite-list-header">API Suites</div>
+        <Toolbar>
+          <ToolbarGroup key={0} float="left">
+            <ToolbarTitle text="API Suites" />
+          </ToolbarGroup>
+          <ToolbarGroup key={1} float="right">
+            <IconButton 
+                iconClassName="material-icons mui-icon-add-item" 
+                tooltip="Add Suite"
+                onClick={this._createNewSuite}/>
+            <IconButton 
+                iconClassName="material-icons mui-icon-upload" 
+                tooltip="Import Suite"/>
+          </ToolbarGroup>
+        </Toolbar>
         <ul className="suite-list">
         { 
           this.props.suites.map((suite) => { 
@@ -29,9 +44,7 @@ let SuiteList = React.createClass({
               <li key={suite.id}>
               <a href="javascript:void(0);" onClick={this._selectSuite.bind(this, suite) }>
                   {suite.name}
-                  <span className="suite-active-indicator">
-                    <Toggle />
-                  </span>
+                  { suite.active && <span className="suite-active-indicator"></span> }
                 </a>
               </li>
             );

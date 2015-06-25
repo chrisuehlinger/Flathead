@@ -11,7 +11,7 @@ let App = React.createClass({
   
     return {
       suites: [],
-      selectedSuite: null
+      selectedSuiteId: null
     };
   },
   
@@ -26,7 +26,7 @@ let App = React.createClass({
   },
   
   _onSuiteSelect(suite){
-    this.setState({selectedSuite: suite});
+    this.setState({selectedSuiteId: suite.id});
   },
 
   componentDidMount() {
@@ -38,10 +38,12 @@ let App = React.createClass({
   },
 
   render() {
+    let selectedSuite = this.state.suites.filter((suite) => suite.id === this.state.selectedSuiteId )[0];
+  
     return (
       <div className="wrapper">
         <SuiteList suites={this.state.suites} selectSuite={this._onSuiteSelect}/>
-        <SuiteEditor suite={this.state.selectedSuite} />
+        <SuiteEditor suite={selectedSuite} />
       </div>
     );
   }

@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
 /* POST a new route */
 
 router.post('/', function(req, res) {
+    console.log(req.body);
     db('suites').push(req.body);
     res.send(db('suites'));
 });

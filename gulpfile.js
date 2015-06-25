@@ -2,7 +2,9 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  browserify = require('browserify'),
+  source = require('vinyl-source-stream');
 
 gulp.task('sass', function () {
   gulp.src('./public/css/*.scss')
@@ -12,8 +14,16 @@ gulp.task('sass', function () {
     .pipe(livereload());
 });
 
+gulp.task('browserify', function(){
+  return browserify('./public/src/index.jsx')
+          .bundle()
+          .pipe(source('app.js'))
+          .pipe(gulp.dest('./public/js/'));;
+});
+
 gulp.task('watch', function() {
   gulp.watch('./public/css/*.scss', ['sass']);
+  gulp.watch('./public/src/**/*.jsx', ['browserify']);
 });
 
 gulp.task('develop', function () {
@@ -30,6 +40,7 @@ gulp.task('develop', function () {
 
 gulp.task('default', [
   'sass',
+  'browserify',
   'develop',
   'watch'
 ]);

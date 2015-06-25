@@ -1,7 +1,7 @@
 const React = require('react');
 const RouteEditor = require('./RouteEditor.jsx');
-const mui = require('material-ui');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
+const mui = require('material-ui');
 
 let {RaisedButton, Toggle, TextField} = mui;
 
@@ -36,9 +36,16 @@ let SuiteEditor = React.createClass({
             <RaisedButton label="Save" onClick={this._saveSuite} />
             <RaisedButton label="Delete" onClick={this._deleteSuite} />
           </div>
-          <TextField floatingLabelText="Name" ref="nameInput" defaultValue={this.props.suite.name} />
-          <Toggle label="Active" defaultToggled={this.props.suite.active} ref="activeToggle" />
-            Routes:
+          <div className="suite-metadata-editor">
+            <TextField 
+                floatingLabelText="Name" 
+                fullWidth={true}
+                ref="nameInput" 
+                defaultValue={this.props.suite.name} />
+            <Toggle label="Active" defaultToggled={this.props.suite.active} ref="activeToggle" />
+          </div>
+          <hr />
+          <h3>Routes</h3>
             <ul className="route-list">
               { this.props.suite.routes.map((route) => <li key={route.request.url}> <RouteEditor route={route} /></li>)}
             </ul>

@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
+@import "codemirror.scss";
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
@@ -23,6 +23,7 @@ body {
   
   .suite-list-pane {
     width: 400px;
+    border-right: 1px solid #999;
     overflow: hidden;
     
     .suite-list-header {
@@ -75,5 +76,17 @@ body {
     max-width: calc(100vw - 400px);
     padding: 20px;
     overflow-y: auto;
+    
+    .suite-metadata-editor {
+      width: 400px;
+    }
+    
+    .route-list {
+      padding-left: 0;
+      
+      li {
+        list-style: none;
+      }
+    }
   }
 }

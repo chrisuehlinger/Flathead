@@ -1,14 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
 }
 
 .wrapper {
   display: flex;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   
   .suite-list-pane {
+    width: 400px;
     overflow: hidden;
     
     .suite-list-header {
@@ -17,6 +21,8 @@ body {
       justify-content: center;
       align-items: center;
       border: 1px solid #999;
+      font-size: 20px;
+      font-weight: 300;
     }
     
     .suite-list {
@@ -28,16 +34,35 @@ body {
       li {
         list-style: none;
         a{
-          display: block;
+          display: flex;
           padding: 20px;
           border: 1px solid #999;
+          
+          color:#fff;
+          text-decoration: none;
+          background: #1883ff;
+          
+          &:hover {
+            background: #80bbff;
+          }
+          
+          .suite-active-indicator {
+            display: block;
+            background: lime;
+            height: 16px;
+            width: 16px;
+            border-radius:50%;
+            margin-left: auto;
+            box-shadow: 0px 0px 10px lime;
+            
+          }
         }
       }
     }
   }
   
   .suite-editor {
-    
-    overflow: auto;
+    max-width: calc(100vw - 400px);
+    overflow-y: auto;
   }
 }

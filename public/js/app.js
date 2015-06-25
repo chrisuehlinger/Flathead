@@ -29707,7 +29707,7 @@ module.exports = {
 
 };
 
-},{"../constants/AppConstants":167,"../dispatchers/AppDispatcher":168}],164:[function(require,module,exports){
+},{"../constants/AppConstants":168,"../dispatchers/AppDispatcher":169}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -29750,12 +29750,28 @@ setTimeout(function () {
 });
 module.exports = App;
 
-},{"../stores/SuiteStore":171,"./SuiteEditor.jsx":165,"./SuiteList.jsx":166,"react":162}],165:[function(require,module,exports){
+},{"../stores/SuiteStore":172,"./SuiteEditor.jsx":166,"./SuiteList.jsx":167,"react":162}],165:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
 
-var SuiteEditor = React.createClass({ displayName: "SuiteEditor",
+var RouteEditor = React.createClass({ displayName: "RouteEditor",
+  componentDidMount: function componentDidMount() {},
+
+  render: function render() {
+    return React.createElement("div", { className: "route-editor" }, React.createElement("div", null, "URL: ", this.props.route.request.url), React.createElement("div", null, "Response: ", this.props.route.response.content.text));
+  }
+});
+
+module.exports = RouteEditor;
+
+},{"react":162}],166:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var RouteEditor = require('./RouteEditor.jsx');
+
+var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
   getInitialProps: function getInitialProps() {
     return {
       suite: null
@@ -29766,16 +29782,18 @@ var SuiteEditor = React.createClass({ displayName: "SuiteEditor",
 
   render: function render() {
     if (this.props.suite) {
-      return React.createElement("div", { className: "suite-editor" }, "Name: ", this.props.suite.name);
+      return React.createElement('div', { className: 'suite-editor' }, React.createElement('div', null, 'Name: ', this.props.suite.name), 'Routes:', React.createElement('ul', { className: 'route-list' }, this.props.suite.routes.map(function (route) {
+        return React.createElement('li', { key: route.request.url }, ' ', React.createElement(RouteEditor, { route: route }));
+      })));
     } else {
-      return React.createElement("div", { className: "suite-editor" }, "This will be an area for editing suites.");
+      return React.createElement('div', { className: 'suite-editor' }, 'This will be an area for editing suites.');
     }
   }
 });
 
 module.exports = SuiteEditor;
 
-},{"react":162}],166:[function(require,module,exports){
+},{"./RouteEditor.jsx":165,"react":162}],167:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -29798,14 +29816,14 @@ var SuiteList = React.createClass({ displayName: "SuiteList",
 
     console.log(this.props.suites);
     return React.createElement("div", { className: "suite-list-pane" }, React.createElement("div", { className: "suite-list-header" }, "API Suites"), React.createElement("ul", { className: "suite-list" }, this.props.suites.map(function (suite) {
-      return React.createElement("li", { key: suite.id }, React.createElement("a", { href: "javascript:void(0);", onClick: _this._selectSuite.bind(_this, suite) }, suite.name));
+      return React.createElement("li", { key: suite.id }, React.createElement("a", { href: "javascript:void(0);", onClick: _this._selectSuite.bind(_this, suite) }, suite.name, suite.active && React.createElement("span", { className: "suite-active-indicator" })));
     })));
   }
 });
 
 module.exports = SuiteList;
 
-},{"react":162}],167:[function(require,module,exports){
+},{"react":162}],168:[function(require,module,exports){
 'use strict';
 
 var keyMirror = require('react/lib/keyMirror');
@@ -29824,7 +29842,7 @@ module.exports = {
 
 };
 
-},{"react/lib/keyMirror":147}],168:[function(require,module,exports){
+},{"react/lib/keyMirror":147}],169:[function(require,module,exports){
 'use strict';
 
 var Dispatcher = require('flux').Dispatcher;
@@ -29853,7 +29871,7 @@ var AppDispatcher = assign(new Dispatcher(), {
 
 module.exports = AppDispatcher;
 
-},{"../constants/AppConstants":167,"flux":3,"object-assign":7}],169:[function(require,module,exports){
+},{"../constants/AppConstants":168,"flux":3,"object-assign":7}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -29867,7 +29885,7 @@ $.ajax('/suites').then(function (data) {
   SuiteActionCreators.replaceAllSuites(data);
 });
 
-},{"./actions/SuiteActionCreators":163,"./components/App.jsx":164,"jquery":6,"react":162}],170:[function(require,module,exports){
+},{"./actions/SuiteActionCreators":163,"./components/App.jsx":164,"jquery":6,"react":162}],171:[function(require,module,exports){
 'use strict';
 
 var assign = require('object-assign');
@@ -29892,7 +29910,7 @@ module.exports = assign({}, EventEmitter.prototype, {
   }
 });
 
-},{"events":1,"object-assign":7}],171:[function(require,module,exports){
+},{"events":1,"object-assign":7}],172:[function(require,module,exports){
 'use strict';
 
 var AppDispatcher = require('../dispatchers/AppDispatcher');
@@ -29949,4 +29967,4 @@ var SuiteStore = assign({}, BaseStore, {
 
 module.exports = SuiteStore;
 
-},{"../constants/AppConstants":167,"../dispatchers/AppDispatcher":168,"./BaseStore":170,"object-assign":7}]},{},[169]);
+},{"../constants/AppConstants":168,"../dispatchers/AppDispatcher":169,"./BaseStore":171,"object-assign":7}]},{},[170]);

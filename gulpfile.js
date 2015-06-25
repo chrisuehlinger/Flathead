@@ -23,7 +23,7 @@ gulp.task('browserify', function(){
 
 gulp.task('watch', function() {
   gulp.watch('./public/css/*.scss', ['sass']);
-  gulp.watch('./public/src/**/*.jsx', ['browserify']);
+  gulp.watch(['./public/src/**/*.js', './public/src/**/*.jsx'], ['browserify']);
 });
 
 gulp.task('develop', function () {

@@ -1,4 +1,5 @@
 const React = require('react');
+const RouteEditor = require('./RouteEditor.jsx');
 
 let SuiteEditor = React.createClass({
   getInitialProps() {
@@ -14,7 +15,11 @@ let SuiteEditor = React.createClass({
     if(this.props.suite){
       return (
         <div className="suite-editor">
-          Name: {this.props.suite.name}
+        <div>Name: {this.props.suite.name}</div>
+          Routes:
+          <ul className="route-list">
+          { this.props.suite.routes.map((route) => <li key={route.request.url}> <RouteEditor route={route} /></li>)}
+          </ul>
         </div>
       );
     } else {

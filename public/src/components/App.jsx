@@ -3,12 +3,21 @@ const SuiteEditor = require('./SuiteEditor.jsx');
 const SuiteList = require('./SuiteList.jsx');
 const SuiteStore = require('../stores/SuiteStore');
 
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+
 let App = React.createClass({
   getInitialState() {
   
     return {
       suites: [],
       selectedSuite: null
+    };
+  },
+  
+  getChildContext() { 
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
     };
   },
 
@@ -38,6 +47,8 @@ let App = React.createClass({
   }
 });
 
+App.childContextTypes = {
+  muiTheme: React.PropTypes.object
+};
 
-setTimeout(()=> SuiteStore.emitChange());
 module.exports = App;

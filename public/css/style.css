@@ -36,13 +36,7 @@ body {
           .wrapper .suite-list-pane .suite-list li a:hover {
             background: #80bbff; }
           .wrapper .suite-list-pane .suite-list li a .suite-active-indicator {
-            display: block;
-            background: lime;
-            height: 16px;
-            width: 16px;
-            border-radius: 50%;
-            margin-left: auto;
-            box-shadow: 0px 0px 10px lime; }
+            margin-left: auto; }
   .wrapper .suite-editor {
     max-width: calc(100vw - 400px);
     overflow-y: auto; }

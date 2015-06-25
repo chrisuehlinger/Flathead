@@ -29719,13 +29719,17 @@ var App = React.createClass({ displayName: 'App',
   getInitialState: function getInitialState() {
 
     return {
-      suites: []
+      suites: [],
+      selectedSuite: null
     };
   },
 
   _onChange: function _onChange() {
-    console.log('Change!', SuiteStore.getAll());
     this.setState(SuiteStore.getAll());
+  },
+
+  _onSuiteSelect: function _onSuiteSelect(suite) {
+    this.setState({ selectedSuite: suite });
   },
 
   componentDidMount: function componentDidMount() {
@@ -29737,7 +29741,7 @@ var App = React.createClass({ displayName: 'App',
   },
 
   render: function render() {
-    return React.createElement('div', { className: 'wrapper' }, React.createElement(SuiteList, { suites: this.state.suites }), React.createElement(SuiteEditor, null));
+    return React.createElement('div', { className: 'wrapper' }, React.createElement(SuiteList, { suites: this.state.suites, selectSuite: this._onSuiteSelect }), React.createElement(SuiteEditor, { suite: this.state.selectedSuite }));
   }
 });
 
@@ -29752,14 +29756,20 @@ module.exports = App;
 var React = require("react");
 
 var SuiteEditor = React.createClass({ displayName: "SuiteEditor",
-  getInitialState: function getInitialState() {
-    return {};
+  getInitialProps: function getInitialProps() {
+    return {
+      suite: null
+    };
   },
 
   componentDidMount: function componentDidMount() {},
 
   render: function render() {
-    return React.createElement("div", { className: "suite-editor" }, "This will be an area for editing suites.");
+    if (this.props.suite) {
+      return React.createElement("div", { className: "suite-editor" }, "Name: ", this.props.suite.name);
+    } else {
+      return React.createElement("div", { className: "suite-editor" }, "This will be an area for editing suites.");
+    }
   }
 });
 
@@ -29779,10 +29789,17 @@ var SuiteList = React.createClass({ displayName: "SuiteList",
 
   componentDidMount: function componentDidMount() {},
 
+  _selectSuite: function _selectSuite(suite) {
+    this.props.selectSuite(suite);
+  },
+
   render: function render() {
-    return React.createElement("ul", { className: "suite-list" }, this.props.suites.map(function (suite) {
-      return React.createElement("li", null, suite);
-    }));
+    var _this = this;
+
+    console.log(this.props.suites);
+    return React.createElement("div", { className: "suite-list-pane" }, React.createElement("div", { className: "suite-list-header" }, "API Suites"), React.createElement("ul", { className: "suite-list" }, this.props.suites.map(function (suite) {
+      return React.createElement("li", { key: suite.id }, React.createElement("a", { href: "javascript:void(0);", onClick: _this._selectSuite.bind(_this, suite) }, suite.name));
+    })));
   }
 });
 
@@ -29846,7 +29863,6 @@ var SuiteActionCreators = require('./actions/SuiteActionCreators');
 
 React.render(React.createElement(App, null), document.getElementById('main'));
 
-console.log('fetching');
 $.ajax('/suites').then(function (data) {
   SuiteActionCreators.replaceAllSuites(data);
 });
@@ -29893,7 +29909,6 @@ function addItem(suite) {
 }
 
 function replaceAll(suites) {
-  console.log('Replacing!', suites);
   _data = suites;
 }
 

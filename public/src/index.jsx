@@ -5,7 +5,6 @@ const SuiteActionCreators = require('./actions/SuiteActionCreators');
 
 React.render(<App />, document.getElementById('main'));
 
-console.log('fetching');
 $.ajax('/suites').then(function(data){
   SuiteActionCreators.replaceAllSuites(data);
 });

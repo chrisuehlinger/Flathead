@@ -7,13 +7,17 @@ let App = React.createClass({
   getInitialState() {
   
     return {
-      suites: []
+      suites: [],
+      selectedSuite: null
     };
   },
 
   _onChange() {
-    console.log('Change!',SuiteStore.getAll());
     this.setState(SuiteStore.getAll());
+  },
+  
+  _onSuiteSelect(suite){
+    this.setState({selectedSuite: suite});
   },
 
   componentDidMount() {
@@ -27,8 +31,8 @@ let App = React.createClass({
   render() {
     return (
       <div className="wrapper">
-        <SuiteList suites={this.state.suites}/>
-        <SuiteEditor />
+        <SuiteList suites={this.state.suites} selectSuite={this._onSuiteSelect}/>
+        <SuiteEditor suite={this.state.selectedSuite} />
       </div>
     );
   }

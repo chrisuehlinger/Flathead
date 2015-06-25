@@ -12,7 +12,6 @@ function addItem(suite) {
 }
 
 function replaceAll(suites){
-  console.log('Replacing!', suites);
   _data = suites;
 }
 

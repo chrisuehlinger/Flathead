@@ -9,12 +9,30 @@ let SuiteList = React.createClass({
 
   componentDidMount() {
   },
+  
+  _selectSuite(suite){
+    this.props.selectSuite(suite);
+  },
 
   render() {
+    console.log(this.props.suites);
     return (
-      <ul className="suite-list">
-        { this.props.suites.map((suite) => <li>{suite}</li>) }
-      </ul>
+      <div className="suite-list-pane">
+      <div className="suite-list-header">API Suites</div>
+        <ul className="suite-list">
+        { 
+          this.props.suites.map((suite) => { 
+            return (
+              <li key={suite.id}>
+              <a href="javascript:void(0);" onClick={this._selectSuite.bind(this, suite) }>
+                  {suite.name}
+                </a>
+              </li>
+            );
+          }) 
+        }
+        </ul>
+      </div>
     );
   }
 });

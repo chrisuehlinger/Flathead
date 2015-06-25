@@ -18,8 +18,7 @@ gulp.task('browserify', function(){
   return browserify('./public/src/index.jsx')
           .bundle()
           .pipe(source('app.js'))
-          .pipe(gulp.dest('./public/js/'))
-          .pipe(livereload());
+          .pipe(gulp.dest('./public/js/'));
 });
 
 gulp.task('watch', function() {

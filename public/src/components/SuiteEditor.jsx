@@ -1,19 +1,29 @@
 const React = require('react');
 
 let SuiteEditor = React.createClass({
-  getInitialState() {
-    return {};
+  getInitialProps() {
+    return {
+      suite: null
+    };
   },
 
   componentDidMount() {
   },
 
   render() {
-    return (
-      <div className="suite-editor">
-        This will be an area for editing suites.
-      </div>
-    );
+    if(this.props.suite){
+      return (
+        <div className="suite-editor">
+          Name: {this.props.suite.name}
+        </div>
+      );
+    } else {
+      return (
+        <div className="suite-editor">
+          This will be an area for editing suites.
+        </div>
+      );
+    }
   }
 });
 

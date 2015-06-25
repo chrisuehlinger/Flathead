@@ -47207,7 +47207,6 @@ var App = React.createClass({ displayName: 'App',
     var selectedSuite = this.state.suites.filter(function (suite) {
       return suite.id === _this.state.selectedSuiteId;
     })[0];
-
     return React.createElement('div', { className: 'wrapper' }, React.createElement(SuiteList, { suites: this.state.suites, selectSuite: this._onSuiteSelect }), React.createElement(SuiteEditor, { suite: selectedSuite }));
   }
 });
@@ -47238,6 +47237,12 @@ module.exports = RouteEditor;
 
 var React = require('react');
 var RouteEditor = require('./RouteEditor.jsx');
+var mui = require('material-ui');
+var SuiteActionCreators = require('../actions/SuiteActionCreators');
+
+var RaisedButton = mui.RaisedButton;
+var Toggle = mui.Toggle;
+var TextField = mui.TextField;
 
 var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
   getInitialProps: function getInitialProps() {
@@ -47246,11 +47251,25 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
     };
   },
 
-  componentDidMount: function componentDidMount() {},
+  _saveSuite: function _saveSuite() {
+    var newSuite = {
+      id: this.props.suite.id,
+      name: this.refs.nameInput.getValue(),
+      active: this.refs.activeToggle.isToggled(),
+      routes: this.props.suite.routes
+    };
+    console.log('Saving', newSuite);
+    SuiteActionCreators.updateSuite(newSuite);
+  },
+
+  _deleteSuite: function _deleteSuite() {
+    SuiteActionCreators.deleteSuite(this.props.suite);
+  },
 
   render: function render() {
+    console.log('Now editing:', this.props.suite);
     if (this.props.suite) {
-      return React.createElement('div', { className: 'suite-editor' }, React.createElement('label', null, 'Name: ', React.createElement('input', { type: 'text', value: this.props.suite.name })), 'Routes:', React.createElement('ul', { className: 'route-list' }, this.props.suite.routes.map(function (route) {
+      return React.createElement('div', { className: 'suite-editor' }, React.createElement('div', { className: 'suite-editor-buttons' }, React.createElement(RaisedButton, { label: 'Save', onClick: this._saveSuite }), React.createElement(RaisedButton, { label: 'Delete', onClick: this._deleteSuite })), React.createElement(TextField, { floatingLabelText: 'Name', ref: 'nameInput', defaultValue: this.props.suite.name }), React.createElement(Toggle, { label: 'Active', defaultToggled: this.props.suite.active, ref: 'activeToggle' }), 'Routes:', React.createElement('ul', { className: 'route-list' }, this.props.suite.routes.map(function (route) {
         return React.createElement('li', { key: route.request.url }, ' ', React.createElement(RouteEditor, { route: route }));
       })));
     } else {
@@ -47261,7 +47280,7 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
 
 module.exports = SuiteEditor;
 
-},{"./RouteEditor.jsx":305,"react":302}],307:[function(require,module,exports){
+},{"../actions/SuiteActionCreators":303,"./RouteEditor.jsx":305,"material-ui":40,"react":302}],307:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -47486,7 +47505,7 @@ function replaceAll(suites) {
   var selectedSuite = suites.filter(function (suite) {
     return suite.id === _data.selectedSuiteId;
   })[0];
-
+  console.log('checking selectedSuite', selectedSuite);
   if (!selectedSuite) _data.selectedSuiteId = null;
 }
 
@@ -47499,7 +47518,7 @@ var SuiteStore = assign({}, BaseStore, {
   },
 
   getSelectedSuite: function getSelectedSuite() {
-    return data.selectedSuite;
+    return _data.selectedSuite;
   },
 
   // register store with dispatcher, allowing actions to flow through

@@ -1,24 +1,30 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+/* line 5, /Users/Chris/Development/Flathead/public/css/style.scss */
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0; }
 
+/* line 10, /Users/Chris/Development/Flathead/public/css/style.scss */
 .mui-icon-add-item:before {
   content: "add"; }
 
+/* line 14, /Users/Chris/Development/Flathead/public/css/style.scss */
 .mui-icon-upload:before {
   content: "file_upload"; }
 
+/* line 18, /Users/Chris/Development/Flathead/public/css/style.scss */
 .wrapper {
   display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden; }
+  /* line 24, /Users/Chris/Development/Flathead/public/css/style.scss */
   .wrapper .suite-list-pane {
     width: 400px;
     overflow: hidden; }
+    /* line 28, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-list-pane .suite-list-header {
       height: 50px;
       display: flex;
@@ -27,13 +33,16 @@ body {
       border: 1px solid #999;
       font-size: 20px;
       font-weight: 300; }
+    /* line 38, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-list-pane .suite-list {
       height: calc(100vh - 50px);
       padding-left: 0;
       margin: 0;
       overflow: auto; }
+      /* line 44, /Users/Chris/Development/Flathead/public/css/style.scss */
       .wrapper .suite-list-pane .suite-list li {
         list-style: none; }
+        /* line 46, /Users/Chris/Development/Flathead/public/css/style.scss */
         .wrapper .suite-list-pane .suite-list li a {
           display: flex;
           padding: 20px;
@@ -41,8 +50,10 @@ body {
           color: #fff;
           text-decoration: none;
           background: #1883ff; }
+          /* line 55, /Users/Chris/Development/Flathead/public/css/style.scss */
           .wrapper .suite-list-pane .suite-list li a:hover {
             background: #80bbff; }
+          /* line 59, /Users/Chris/Development/Flathead/public/css/style.scss */
           .wrapper .suite-list-pane .suite-list li a .suite-active-indicator {
             display: block;
             background: lime;
@@ -51,6 +62,10 @@ body {
             border-radius: 50%;
             box-shadow: 0px 0px 10px lime;
             margin-left: auto; }
+  /* line 74, /Users/Chris/Development/Flathead/public/css/style.scss */
   .wrapper .suite-editor {
     max-width: calc(100vw - 400px);
+    padding: 20px;
     overflow-y: auto; }
+
+/*# sourceMappingURL=style.css.map */

@@ -79,7 +79,7 @@ function replaceAll(suites){
   _data.suites = suites;
   
   let selectedSuite = suites.filter((suite) => suite.id === _data.selectedSuiteId)[0];
-  
+  console.log('checking selectedSuite', selectedSuite);
   if(!selectedSuite)
     _data.selectedSuiteId = null;
 }
@@ -93,7 +93,7 @@ let SuiteStore = assign({}, BaseStore, {
   },
   
   getSelectedSuite() {
-    return data.selectedSuite;
+    return _data.selectedSuite;
   },
 
   // register store with dispatcher, allowing actions to flow through

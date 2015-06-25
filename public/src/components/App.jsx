@@ -39,7 +39,6 @@ let App = React.createClass({
 
   render() {
     let selectedSuite = this.state.suites.filter((suite) => suite.id === this.state.selectedSuiteId )[0];
-  
     return (
       <div className="wrapper">
         <SuiteList suites={this.state.suites} selectSuite={this._onSuiteSelect}/>

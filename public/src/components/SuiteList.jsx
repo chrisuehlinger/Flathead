@@ -1,6 +1,7 @@
 const React = require('react');
-const mui = require('material-ui');
+const _ = require('lodash');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
+const mui = require('material-ui');
 
 let {Toolbar, ToolbarGroup, ToolbarTitle, IconButton} = mui;
 
@@ -51,6 +52,14 @@ let SuiteList = React.createClass({
   _selectSuite(suite){
     this.props.selectSuite(suite);
   },
+  
+  _toggleSuiteActive(suite, active, event){
+    event.stopPropagation();
+    
+    var newSuite = _.cloneDeep(suite);
+    newSuite.active = active;
+    SuiteActionCreators.updateSuite(newSuite);
+  },
 
   render() {
     console.log(this.props.suites);
@@ -79,7 +88,9 @@ let SuiteList = React.createClass({
               <li key={suite.id}>
               <a href="javascript:void(0);" onClick={this._selectSuite.bind(this, suite) }>
                   {suite.name}
-                  { suite.active && <span className="suite-active-indicator"></span> }
+                  { suite.active 
+                  ? <span className="suite-active-indicator" onClick={this._toggleSuiteActive.bind(this, suite, false)}></span>
+                      : <span className="suite-inactive-indicator" onClick={this._toggleSuiteActive.bind(this, suite, true)}></span> }
                 </a>
               </li>
             );

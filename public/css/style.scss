@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import "codemirror.scss";
 body {
@@ -71,15 +72,41 @@ body {
             margin-left: auto;
             
           }
+          
+          .suite-inactive-indicator {
+            display: block;
+            background: red;
+            height: 16px;
+            width: 16px;
+            border-radius:50%;
+            box-shadow: 0px 0px 10px red;
+            margin-left: auto;
+            
+          }
         }
       }
     }
   }
   
   .suite-editor {
-    max-width: calc(100vw - 400px);
+    width: calc(100vw - 400px);
     padding: 20px;
     overflow-y: auto;
+    background-color: #efefef;
+    
+    &.suite-editor-empty {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      h1 {
+        font-family: 'Montserrat';
+        font-size: 72px;
+        margin: 0;
+        color: #333;
+      }
+    }
     
     .suite-editor-buttons {
       display: flex;

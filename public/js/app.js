@@ -69228,7 +69228,7 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
           onDelete: _this._deleteRoute }));
       })));
     } else {
-      return React.createElement('div', { className: 'suite-editor' }, 'This will be an area for editing suites.');
+      return React.createElement('div', { className: 'suite-editor suite-editor-empty' }, React.createElement('img', { src: '/img/logo.svg' }), React.createElement('h1', null, 'FLATHEAD'));
     }
   }
 });
@@ -69239,8 +69239,9 @@ module.exports = SuiteEditor;
 'use strict';
 
 var React = require('react');
-var mui = require('material-ui');
+var _ = require('lodash');
 var SuiteActionCreators = require('../actions/SuiteActionCreators');
+var mui = require('material-ui');
 
 var Toolbar = mui.Toolbar;
 var ToolbarGroup = mui.ToolbarGroup;
@@ -69294,6 +69295,14 @@ var SuiteList = React.createClass({ displayName: 'SuiteList',
     this.props.selectSuite(suite);
   },
 
+  _toggleSuiteActive: function _toggleSuiteActive(suite, active, event) {
+    event.stopPropagation();
+
+    var newSuite = _.cloneDeep(suite);
+    newSuite.active = active;
+    SuiteActionCreators.updateSuite(newSuite);
+  },
+
   render: function render() {
     var _this = this;
 
@@ -69305,14 +69314,14 @@ var SuiteList = React.createClass({ displayName: 'SuiteList',
       iconClassName: 'material-icons mui-icon-upload',
       tooltip: 'Import Suite',
       onClick: this._clickImportInput }), React.createElement('input', { type: 'file', ref: 'importInput', style: { display: 'none' }, onChange: this._importNewSuite }))), React.createElement('ul', { className: 'suite-list' }, this.props.suites.map(function (suite) {
-      return React.createElement('li', { key: suite.id }, React.createElement('a', { href: 'javascript:void(0);', onClick: _this._selectSuite.bind(_this, suite) }, suite.name, suite.active && React.createElement('span', { className: 'suite-active-indicator' })));
+      return React.createElement('li', { key: suite.id }, React.createElement('a', { href: 'javascript:void(0);', onClick: _this._selectSuite.bind(_this, suite) }, suite.name, suite.active ? React.createElement('span', { className: 'suite-active-indicator', onClick: _this._toggleSuiteActive.bind(_this, suite, false) }) : React.createElement('span', { className: 'suite-inactive-indicator', onClick: _this._toggleSuiteActive.bind(_this, suite, true) })));
     })));
   }
 });
 
 module.exports = SuiteList;
 
-},{"../actions/SuiteActionCreators":307,"material-ui":43,"react":306}],312:[function(require,module,exports){
+},{"../actions/SuiteActionCreators":307,"lodash":9,"material-ui":43,"react":306}],312:[function(require,module,exports){
 'use strict';
 
 var keyMirror = require('react/lib/keyMirror');

@@ -190,8 +190,9 @@ let SuiteEditor = React.createClass({
       );
     } else {
       return (
-        <div className="suite-editor">
-          This will be an area for editing suites.
+        <div className="suite-editor suite-editor-empty">
+          <img src="/img/logo.svg" />
+          <h1>FLATHEAD</h1>
         </div>
       );
     }

@@ -4,7 +4,14 @@ require('codemirror/mode/javascript/javascript.js');
 const mui = require('material-ui');
 const _ = require('lodash');
 
-let {RaisedButton, Toggle, TextField, Paper, IconButton} = mui;
+let {
+  RaisedButton, 
+  Toggle, 
+  TextField, 
+  Paper, 
+  IconButton,
+  DropDownMenu
+  } = mui;
 
 let RouteEditor = React.createClass({
   getDefaultProps(){
@@ -31,6 +38,12 @@ let RouteEditor = React.createClass({
     this.props.onChange(newRoute);
   },
   
+  _changeMethod(event) {
+    var newRoute = _.cloneDeep(this.state.route);
+    newRoute.request.method = event.target.value;
+    this.props.onChange(newRoute);
+  },
+  
   _changeResponseText(newResponseText) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.response.content.text = newResponseText;
@@ -50,11 +63,18 @@ let RouteEditor = React.createClass({
     }
     
     let options = {
-			lineNumbers: true,
-            mode:{name:"javascript", json:true},
-            theme: 'monokai',
-            lineWrapping: true
-		};
+      lineNumbers: true,
+      mode:{name:"javascript", json:true},
+      theme: 'monokai',
+      lineWrapping: true
+    };
+        
+    var methods = [
+      { payload: '1', text: 'GET' },
+      { payload: '2', text: 'POST' },
+      { payload: '3', text: 'PUT' },
+      { payload: '4', text: 'DELETE' }
+    ];
     return (
       <Paper zDepth={2} className="route-editor">
         <div className="delete-button-area">
@@ -63,6 +83,10 @@ let RouteEditor = React.createClass({
                 tooltip="Delete"
                 onClick={this._deleteRoute}/>
         </div>
+        <TextField 
+            floatingLabelText="Method" 
+            value={this.state.route.request.method}
+            onChange={this._changeMethod}/>
         <TextField 
             floatingLabelText="URL" 
             ref="urlInput" 

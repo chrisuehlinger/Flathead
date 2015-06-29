@@ -2,6 +2,7 @@ const React = require('react');
 const SuiteEditor = require('./SuiteEditor.jsx');
 const SuiteList = require('./SuiteList.jsx');
 const SuiteStore = require('../stores/SuiteStore');
+const SuiteActionCreators = require('../actions/SuiteActionCreators');
 
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
@@ -26,7 +27,7 @@ let App = React.createClass({
   },
   
   _onSuiteSelect(suite){
-    this.setState({selectedSuiteId: suite.id});
+    SuiteActionCreators.selectSuite(suite);
   },
 
   componentDidMount() {

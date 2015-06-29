@@ -68921,6 +68921,7 @@ var React = require('react');
 var SuiteEditor = require('./SuiteEditor.jsx');
 var SuiteList = require('./SuiteList.jsx');
 var SuiteStore = require('../stores/SuiteStore');
+var SuiteActionCreators = require('../actions/SuiteActionCreators');
 
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
@@ -68945,7 +68946,7 @@ var App = React.createClass({ displayName: 'App',
   },
 
   _onSuiteSelect: function _onSuiteSelect(suite) {
-    this.setState({ selectedSuiteId: suite.id });
+    SuiteActionCreators.selectSuite(suite);
   },
 
   componentDidMount: function componentDidMount() {
@@ -68972,7 +68973,7 @@ App.childContextTypes = {
 
 module.exports = App;
 
-},{"../stores/SuiteStore":316,"./SuiteEditor.jsx":310,"./SuiteList.jsx":311,"material-ui":43,"react":306}],309:[function(require,module,exports){
+},{"../actions/SuiteActionCreators":307,"../stores/SuiteStore":316,"./SuiteEditor.jsx":310,"./SuiteList.jsx":311,"material-ui":43,"react":306}],309:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -68986,6 +68987,7 @@ var Toggle = mui.Toggle;
 var TextField = mui.TextField;
 var Paper = mui.Paper;
 var IconButton = mui.IconButton;
+var DropDownMenu = mui.DropDownMenu;
 
 var RouteEditor = React.createClass({ displayName: 'RouteEditor',
   getDefaultProps: function getDefaultProps() {
@@ -69009,6 +69011,12 @@ var RouteEditor = React.createClass({ displayName: 'RouteEditor',
   _changeURL: function _changeURL(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.url = event.target.value;
+    this.props.onChange(newRoute);
+  },
+
+  _changeMethod: function _changeMethod(event) {
+    var newRoute = _.cloneDeep(this.state.route);
+    newRoute.request.method = event.target.value;
     this.props.onChange(newRoute);
   },
 
@@ -69036,10 +69044,15 @@ var RouteEditor = React.createClass({ displayName: 'RouteEditor',
       theme: 'monokai',
       lineWrapping: true
     };
+
+    var methods = [{ payload: '1', text: 'GET' }, { payload: '2', text: 'POST' }, { payload: '3', text: 'PUT' }, { payload: '4', text: 'DELETE' }];
     return React.createElement(Paper, { zDepth: 2, className: 'route-editor' }, React.createElement('div', { className: 'delete-button-area' }, React.createElement(IconButton, {
       iconClassName: 'material-icons mui-icon-clear-item',
       tooltip: 'Delete',
       onClick: this._deleteRoute })), React.createElement(TextField, {
+      floatingLabelText: 'Method',
+      value: this.state.route.request.method,
+      onChange: this._changeMethod }), React.createElement(TextField, {
       floatingLabelText: 'URL',
       ref: 'urlInput',
       value: this.state.route.request.url,
@@ -69098,6 +69111,7 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
     var newRoute = {
       id: uuid.v4(),
       request: {
+        method: 'GET',
         url: ''
       },
       response: {
@@ -69126,7 +69140,12 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
     this.setState({ suite: newSuite });
   },
 
+  _clickFileInput: function _clickFileInput() {
+    this.refs.harInput.getDOMNode().click();
+  },
+
   _importHAR: function _importHAR(event) {
+    console.log('Importing', event.target.files);
     var input = event.target;
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
       alert('The File APIs are not fully supported in this browser.');
@@ -69152,6 +69171,11 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
 
     parsedHAR.map(function (route) {
       route.id = uuid.v4();
+
+      // Make URL into relative
+      route.request.url = '/' + route.request.url.split('/').splice(3).join('/');
+
+      // Remove unneeded metadata to save space
       delete route.cache;
       delete route.connection;
       delete route.timings;
@@ -69197,7 +69221,7 @@ var SuiteEditor = React.createClass({ displayName: 'SuiteEditor',
         onChange: this._changeName }), React.createElement(Toggle, {
         label: 'Active',
         defaultToggled: this.state.suite.active,
-        onToggle: this._changeActive })), React.createElement('hr', null), React.createElement('h3', null, 'Routes'), React.createElement('div', { className: 'suite-editor-buttons' }, React.createElement(RaisedButton, { label: 'Add Route', onClick: this._addRoute }), React.createElement(RaisedButton, { label: 'Import HAR File', onClick: this._clickFileInput }, React.createElement('input', { type: 'file', style: { display: 'none' }, onChange: this._importHAR }))), React.createElement('ul', { className: 'route-list' }, this.state.suite.routes.map(function (route) {
+        onToggle: this._changeActive })), React.createElement('hr', null), React.createElement('h3', null, 'Routes'), React.createElement('div', { className: 'suite-editor-buttons' }, React.createElement(RaisedButton, { label: 'Add Route', onClick: this._addRoute }), React.createElement(RaisedButton, { label: 'Import HAR File', onClick: this._clickFileInput }, React.createElement('input', { type: 'file', ref: 'harInput', style: { display: 'none' }, onChange: this._importHAR }))), React.createElement('ul', { className: 'route-list' }, this.state.suite.routes.map(function (route) {
         return React.createElement('li', { key: route.id }, React.createElement(RouteEditor, {
           route: route,
           onChange: _this._changeRoute,
@@ -69332,6 +69356,7 @@ var AppDispatcher = assign(new Dispatcher(), {
   },
 
   handleViewAction: function handleViewAction(action) {
+    console.log('Dispatching: ' + action.type);
     var payload = {
       source: Constants.ActionSources.VIEW_ACTION,
       action: action
@@ -69469,7 +69494,6 @@ function replaceAll(suites) {
   var selectedSuite = suites.filter(function (suite) {
     return suite.id === _data.selectedSuiteId;
   })[0];
-  console.log('checking selectedSuite', selectedSuite);
   if (!selectedSuite) _data.selectedSuiteId = null;
 }
 
@@ -69482,7 +69506,7 @@ var SuiteStore = assign({}, BaseStore, {
   },
 
   getSelectedSuite: function getSelectedSuite() {
-    return _data.selectedSuite;
+    return _data.selectedSuiteId;
   },
 
   // register store with dispatcher, allowing actions to flow through

@@ -41,6 +41,7 @@ let SuiteEditor = React.createClass({
     var newRoute = {
       id:uuid.v4(),
       request: {
+        method: 'GET',
         url: ''
       },
       response: {
@@ -71,7 +72,12 @@ let SuiteEditor = React.createClass({
     this.setState({suite: newSuite});
   },
   
+  _clickFileInput(){
+    this.refs.harInput.getDOMNode().click();
+  },
+  
   _importHAR(event){
+    console.log('Importing', event.target.files);
     let input = event.target;
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
       alert('The File APIs are not fully supported in this browser.');
@@ -98,6 +104,11 @@ let SuiteEditor = React.createClass({
                       
     parsedHAR.map((route) => {
       route.id = uuid.v4();
+      
+      // Make URL into relative
+      route.request.url = '/' + route.request.url.split('/').splice(3).join('/');
+      
+      // Remove unneeded metadata to save space
       delete route.cache;
       delete route.connection;
       delete route.timings;
@@ -157,7 +168,7 @@ let SuiteEditor = React.createClass({
           <div className="suite-editor-buttons">
             <RaisedButton label="Add Route" onClick={this._addRoute} />
             <RaisedButton label="Import HAR File" onClick={this._clickFileInput}>
-              <input type="file" style={{display:'none'}} onChange={this._importHAR} />
+            <input type="file" ref="harInput" style={{display:'none'}} onChange={this._importHAR} />
             </RaisedButton>
             
           </div>

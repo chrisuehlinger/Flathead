@@ -2,7 +2,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 /* BASICS */
-/* line 3, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
@@ -10,29 +9,24 @@
   color: black; }
 
 /* PADDING */
-/* line 12, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-lines {
   padding: 4px 0;
   /* Vertical padding around content */ }
 
-/* line 15, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror pre {
   padding: 0 4px;
   /* Horizontal padding of content */ }
 
-/* line 19, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   background-color: white;
   /* The little square between H and V scrollbars */ }
 
 /* GUTTER */
-/* line 25, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
   white-space: nowrap; }
 
-/* line 31, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-linenumber {
   padding: 0 3px 0 5px;
   min-width: 20px;
@@ -40,35 +34,28 @@
   color: #999;
   white-space: nowrap; }
 
-/* line 39, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-guttermarker {
   color: black; }
 
-/* line 40, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-guttermarker-subtle {
   color: #999; }
 
 /* CURSOR */
-/* line 44, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror div.CodeMirror-cursor {
   border-left: 1px solid black; }
 
 /* Shown when moving in bi-directional text */
-/* line 48, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror div.CodeMirror-secondarycursor {
   border-left: 1px solid silver; }
 
-/* line 51, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror.cm-fat-cursor div.CodeMirror-cursor {
   width: auto;
   border: 0;
   background: #7e7; }
 
-/* line 56, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror.cm-fat-cursor div.CodeMirror-cursors {
   z-index: 1; }
 
-/* line 60, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-animate-fat-cursor {
   width: auto;
   border: 0;
@@ -77,195 +64,150 @@
   animation: blink 1.06s steps(1) infinite; }
 
 @-moz-keyframes blink {
-  /* line 68, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   0% {
     background: #7e7; }
 
-  /* line 69, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   50% {
     background: none; }
 
-  /* line 70, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   100% {
     background: #7e7; } }
 
 @-webkit-keyframes blink {
-  /* line 73, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   0% {
     background: #7e7; }
 
-  /* line 74, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   50% {
     background: none; }
 
-  /* line 75, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   100% {
     background: #7e7; } }
 
 @keyframes blink {
-  /* line 78, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   0% {
     background: #7e7; }
 
-  /* line 79, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   50% {
     background: none; }
 
-  /* line 80, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   100% {
     background: #7e7; } }
 
 /* Can style cursor different in overwrite (non-insert) mode */
-/* line 86, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-tab {
   display: inline-block;
   text-decoration: inherit; }
 
-/* line 88, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-ruler {
   border-left: 1px solid #ccc;
   position: absolute; }
 
 /* DEFAULT THEME */
-/* line 95, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-header {
   color: blue; }
 
-/* line 96, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-quote {
   color: #090; }
 
-/* line 97, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-negative {
   color: #d44; }
 
-/* line 98, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-positive {
   color: #292; }
 
-/* line 99, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-header, .cm-strong {
   font-weight: bold; }
 
-/* line 100, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-em {
   font-style: italic; }
 
-/* line 101, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-link {
   text-decoration: underline; }
 
-/* line 102, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-strikethrough {
   text-decoration: line-through; }
 
-/* line 104, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-keyword {
   color: #708; }
 
-/* line 105, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-atom {
   color: #219; }
 
-/* line 106, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-number {
   color: #164; }
 
-/* line 107, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-def {
   color: #00f; }
 
-/* line 112, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-variable-2 {
   color: #05a; }
 
-/* line 113, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-variable-3 {
   color: #085; }
 
-/* line 114, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-comment {
   color: #a50; }
 
-/* line 115, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-string {
   color: #a11; }
 
-/* line 116, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-string-2 {
   color: #f50; }
 
-/* line 117, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-meta {
   color: #555; }
 
-/* line 118, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-qualifier {
   color: #555; }
 
-/* line 119, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-builtin {
   color: #30a; }
 
-/* line 120, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-bracket {
   color: #997; }
 
-/* line 121, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-tag {
   color: #170; }
 
-/* line 122, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-attribute {
   color: #00c; }
 
-/* line 123, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-hr {
   color: #999; }
 
-/* line 124, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-link {
   color: #00c; }
 
-/* line 126, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-default .cm-error {
   color: #f00; }
 
-/* line 127, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-invalidchar {
   color: #f00; }
 
-/* line 129, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-composing {
   border-bottom: 2px solid; }
 
 /* Default styles for common addons */
-/* line 133, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 div.CodeMirror span.CodeMirror-matchingbracket {
   color: #0f0; }
 
-/* line 134, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 div.CodeMirror span.CodeMirror-nonmatchingbracket {
   color: #f22; }
 
-/* line 135, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-matchingtag {
   background: rgba(255, 150, 0, 0.3); }
 
-/* line 136, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-activeline-background {
   background: #e8f2ff; }
 
 /* STOP */
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
-/* line 143, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror {
   position: relative;
   overflow: hidden;
   background: white; }
 
-/* line 149, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-scroll {
   overflow: scroll !important;
   /* Things will break if this is overridden */
@@ -279,7 +221,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   /* Prevent dragging from highlighting the element */
   position: relative; }
 
-/* line 159, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-sizer {
   position: relative;
   border-right: 30px solid transparent; }
@@ -287,44 +228,37 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 /* The fake, visible scrollbars. Used to force redraw during scrolling
    before actuall scrolling happens, thus preventing shaking and
    flickering artifacts. */
-/* line 167, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   position: absolute;
   z-index: 6;
   display: none; }
 
-/* line 172, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-vscrollbar {
   right: 0;
   top: 0;
   overflow-x: hidden;
   overflow-y: scroll; }
 
-/* line 177, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-hscrollbar {
   bottom: 0;
   left: 0;
   overflow-y: hidden;
   overflow-x: scroll; }
 
-/* line 182, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-scrollbar-filler {
   right: 0;
   bottom: 0; }
 
-/* line 185, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutter-filler {
   left: 0;
   bottom: 0; }
 
-/* line 189, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutters {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 3; }
 
-/* line 193, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutter {
   white-space: normal;
   height: 100%;
@@ -334,31 +268,26 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   *zoom: 1;
   *display: inline; }
 
-/* line 202, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutter-wrapper {
   position: absolute;
   z-index: 4;
   height: 100%; }
 
-/* line 207, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutter-elt {
   position: absolute;
   cursor: default;
   z-index: 4; }
 
-/* line 212, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-gutter-wrapper {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none; }
 
-/* line 218, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-lines {
   cursor: text;
   min-height: 1px;
   /* prevents collapsing before first draw */ }
 
-/* line 222, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror pre {
   /* Reset some styles that the rest of the page might have set */
   -moz-border-radius: 0;
@@ -378,13 +307,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow: visible;
   -webkit-tap-highlight-color: transparent; }
 
-/* line 239, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-wrap pre {
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal; }
 
-/* line 245, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-linebackground {
   position: absolute;
   left: 0;
@@ -393,23 +320,19 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   bottom: 0;
   z-index: 0; }
 
-/* line 251, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-linewidget {
   position: relative;
   z-index: 2;
   overflow: auto; }
 
-/* line 259, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-code {
   outline: none; }
 
 /* Force content-box sizing for the elements where we expect it */
-/* line 268, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-gutter, .CodeMirror-gutters, .CodeMirror-linenumber {
   -moz-box-sizing: content-box;
   box-sizing: content-box; }
 
-/* line 273, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-measure {
   position: absolute;
   width: 100%;
@@ -417,215 +340,167 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow: hidden;
   visibility: hidden; }
 
-/* line 280, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-measure pre {
   position: static; }
 
-/* line 282, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror div.CodeMirror-cursor {
   position: absolute;
   border-right: none;
   width: 0; }
 
-/* line 288, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 div.CodeMirror-cursors {
   visibility: hidden;
   position: relative;
   z-index: 3; }
 
-/* line 293, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-focused div.CodeMirror-cursors {
   visibility: visible; }
 
-/* line 297, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-selected {
   background: #d9d9d9; }
 
-/* line 298, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-focused .CodeMirror-selected {
   background: #d7d4f0; }
 
-/* line 299, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror-crosshair {
   cursor: crosshair; }
 
-/* line 300, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror ::selection {
   background: #d7d4f0; }
 
-/* line 301, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror ::-moz-selection {
   background: #d7d4f0; }
 
-/* line 303, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-searching {
   background: #ffa;
   background: rgba(255, 255, 0, 0.4); }
 
 /* IE7 hack to prevent it from returning funny offsetTops on the spans */
-/* line 309, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .CodeMirror span {
   *vertical-align: text-bottom; }
 
 /* Used to force a border model for a node */
-/* line 312, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-force-border {
   padding-right: .1px; }
 
 @media print {
   /* Hide the cursor when printing */
-  /* line 316, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
   .CodeMirror div.CodeMirror-cursors {
     visibility: hidden; } }
 
 /* See issue #2901 */
-/* line 322, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-tab-wrap-hack:after {
   content: ''; }
 
 /* Help users use markselection to safely style text background */
-/* line 325, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 span.CodeMirror-selectedtext {
   background: none; }
 
 /* Based on Sublime Text's Monokai theme */
-/* line 329, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai.CodeMirror {
   background: #272822;
   color: #f8f8f2; }
 
-/* line 330, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai div.CodeMirror-selected {
   background: #49483E !important; }
 
-/* line 331, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai.CodeMirror ::selection {
   background: rgba(73, 72, 62, 0.99); }
 
-/* line 332, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai.CodeMirror ::-moz-selection {
   background: rgba(73, 72, 62, 0.99); }
 
-/* line 333, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-gutters {
   background: #272822;
   border-right: 0px; }
 
-/* line 334, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-guttermarker {
   color: white; }
 
-/* line 335, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-guttermarker-subtle {
   color: #d0d0d0; }
 
-/* line 336, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-linenumber {
   color: #d0d0d0; }
 
-/* line 337, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-cursor {
   border-left: 1px solid #f8f8f0 !important; }
 
-/* line 339, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-comment {
   color: #75715e; }
 
-/* line 340, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-atom {
   color: #ae81ff; }
 
-/* line 341, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-number {
   color: #ae81ff; }
 
-/* line 343, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-property, .cm-s-monokai span.cm-attribute {
   color: #a6e22e; }
 
-/* line 344, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-keyword {
   color: #f92672; }
 
-/* line 345, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-string {
   color: #e6db74; }
 
-/* line 347, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-variable {
   color: #f8f8f2; }
 
-/* line 348, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-variable-2 {
   color: #9effff; }
 
-/* line 349, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-variable-3 {
   color: #66d9ef; }
 
-/* line 350, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-def {
   color: #fd971f; }
 
-/* line 351, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-bracket {
   color: #f8f8f2; }
 
-/* line 352, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-tag {
   color: #f92672; }
 
-/* line 353, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-header {
   color: #ae81ff; }
 
-/* line 354, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-link {
   color: #ae81ff; }
 
-/* line 355, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai span.cm-error {
   background: #f92672;
   color: #f8f8f0; }
 
-/* line 357, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-activeline-background {
   background: #373831 !important; }
 
-/* line 358, /Users/Chris/Development/Flathead/public/css/codemirror.scss */
 .cm-s-monokai .CodeMirror-matchingbracket {
   text-decoration: underline;
   color: white !important; }
 
-/* line 5, /Users/Chris/Development/Flathead/public/css/style.scss */
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0; }
 
-/* line 10, /Users/Chris/Development/Flathead/public/css/style.scss */
 .mui-icon-add-item:before {
   content: "add"; }
 
-/* line 14, /Users/Chris/Development/Flathead/public/css/style.scss */
 .mui-icon-upload:before {
   content: "file_upload"; }
 
-/* line 18, /Users/Chris/Development/Flathead/public/css/style.scss */
 .mui-icon-clear-item:before {
   content: "clear"; }
 
-/* line 22, /Users/Chris/Development/Flathead/public/css/style.scss */
 .wrapper {
   display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden; }
-  /* line 28, /Users/Chris/Development/Flathead/public/css/style.scss */
   .wrapper .suite-list-pane {
     width: 400px;
     border-right: 1px solid #999;
     overflow: hidden; }
-    /* line 33, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-list-pane .suite-list-header {
       height: 50px;
       display: flex;
@@ -634,16 +509,13 @@ body {
       border: 1px solid #999;
       font-size: 20px;
       font-weight: 300; }
-    /* line 43, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-list-pane .suite-list {
       height: calc(100vh - 50px);
       padding-left: 0;
       margin: 0;
       overflow: auto; }
-      /* line 49, /Users/Chris/Development/Flathead/public/css/style.scss */
       .wrapper .suite-list-pane .suite-list li {
         list-style: none; }
-        /* line 51, /Users/Chris/Development/Flathead/public/css/style.scss */
         .wrapper .suite-list-pane .suite-list li a {
           display: flex;
           padding: 20px;
@@ -651,10 +523,8 @@ body {
           color: #fff;
           text-decoration: none;
           background: #1883ff; }
-          /* line 60, /Users/Chris/Development/Flathead/public/css/style.scss */
           .wrapper .suite-list-pane .suite-list li a:hover {
             background: #80bbff; }
-          /* line 64, /Users/Chris/Development/Flathead/public/css/style.scss */
           .wrapper .suite-list-pane .suite-list li a .suite-active-indicator {
             display: block;
             background: lime;
@@ -663,33 +533,23 @@ body {
             border-radius: 50%;
             box-shadow: 0px 0px 10px lime;
             margin-left: auto; }
-  /* line 79, /Users/Chris/Development/Flathead/public/css/style.scss */
   .wrapper .suite-editor {
     max-width: calc(100vw - 400px);
     padding: 20px;
     overflow-y: auto; }
-    /* line 84, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-editor .suite-editor-buttons {
       display: flex;
       align-items: center; }
-      /* line 88, /Users/Chris/Development/Flathead/public/css/style.scss */
       .wrapper .suite-editor .suite-editor-buttons > div {
         margin: 0 10px; }
-    /* line 93, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-editor .suite-metadata-editor {
       width: 400px; }
-    /* line 97, /Users/Chris/Development/Flathead/public/css/style.scss */
     .wrapper .suite-editor .route-list {
       padding-left: 0; }
-      /* line 100, /Users/Chris/Development/Flathead/public/css/style.scss */
       .wrapper .suite-editor .route-list li {
         list-style: none; }
-        /* line 103, /Users/Chris/Development/Flathead/public/css/style.scss */
         .wrapper .suite-editor .route-list li .route-editor {
           margin: 20px 0;
           padding: 0 20px 20px; }
-          /* line 107, /Users/Chris/Development/Flathead/public/css/style.scss */
           .wrapper .suite-editor .route-list li .route-editor .delete-button-area {
             float: right; }
-
-/*# sourceMappingURL=style.css.map */

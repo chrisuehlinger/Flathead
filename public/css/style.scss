@@ -15,6 +15,10 @@ body {
   content:"file_upload";
 }
 
+.mui-icon-clear-item:before {
+  content:"clear";
+}
+
 .wrapper {
   display: flex;
   width: 100vw;
@@ -77,6 +81,15 @@ body {
     padding: 20px;
     overflow-y: auto;
     
+    .suite-editor-buttons {
+      display: flex;
+      align-items: center;
+      
+      & > div {
+        margin: 0 10px;
+      }
+    }
+    
     .suite-metadata-editor {
       width: 400px;
     }
@@ -86,6 +99,15 @@ body {
       
       li {
         list-style: none;
+        
+        .route-editor{
+          margin: 20px 0;
+          padding: 0 20px 20px;
+          
+          .delete-button-area {
+            float: right;
+          }
+        }
       }
     }
   }

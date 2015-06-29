@@ -15,6 +15,39 @@ let SuiteList = React.createClass({
     SuiteActionCreators.createNewSuite();
   },
   
+  _clickImportInput(){
+    this.refs.importInput.getDOMNode().click();
+  },
+  
+  _importNewSuite(){
+    let input = event.target;
+    if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
+      alert('The File APIs are not fully supported in this browser.');
+      return;
+    } else if (!input) {
+      alert("Um, couldn't find the fileinput element.");
+    } else if (!input.files) {
+      alert("This browser doesn't seem to support the `files` property of file inputs.");
+    } else if (!input.files[0]) {
+      alert("Please select a file before clicking 'Load'");               
+    } else {
+      let file = input.files[0];
+      let fr = new FileReader();
+      fr.onload = this._parseImportedSuite;
+      fr.readAsText(file);
+    }
+  },
+  
+  _parseImportedSuite(event){
+    let parsedSuite = JSON.parse(event.target.result);
+    
+    // TODO: Validate the data better than this
+    if(parsedSuite.id && parsedSuite.name && parsedSuite.routes){
+      SuiteActionCreators.addSuite(parsedSuite);
+    }
+    
+  },
+  
   _selectSuite(suite){
     this.props.selectSuite(suite);
   },
@@ -34,7 +67,9 @@ let SuiteList = React.createClass({
                 onClick={this._createNewSuite}/>
             <IconButton 
                 iconClassName="material-icons mui-icon-upload" 
-                tooltip="Import Suite"/>
+                tooltip="Import Suite" 
+                onClick={this._clickImportInput}/>
+            <input type="file" ref="importInput" style={{display:'none'}} onChange={this._importNewSuite}/>
           </ToolbarGroup>
         </Toolbar>
         <ul className="suite-list">

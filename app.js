@@ -25,8 +25,9 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({
+  limit: '50mb',
   extended: true
 }));
 app.use(cookieParser());

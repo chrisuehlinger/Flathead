@@ -3,9 +3,7 @@ var router = express.Router();
 
 var low = require('lowdb');
 
-/* GET one of the stored routes. */
-
-router.get('/*', function(req, res) {
+function routing(req,res,method){
   var db = low('db.json', {
     async: false
   });
@@ -14,7 +12,7 @@ router.get('/*', function(req, res) {
   console.log('Answering: ', suite);
   var routes = [];
   suite.routes.forEach(function(route){
-    if(route.request.method === 'GET' && route.request.url === req.originalUrl){
+    if(route.request.method === method && route.request.url === req.originalUrl){
       routes.push(route);
     }
   });
@@ -27,8 +25,30 @@ router.get('/*', function(req, res) {
   } else {
     res.send('');
   }
-  
-  
+};
+
+/* GET one of the stored routes. */
+
+router.get('/*', function(req, res) {
+  routing(req, res, 'GET');
+});
+
+/* POST one of the stored routes. */
+
+router.post('/*', function(req, res) {
+  routing(req, res, 'POST');
+});
+
+/* PUT one of the stored routes. */
+
+router.put('/*', function(req, res) {
+  routing(req, res, 'PUT');
+});
+
+/* DELETE one of the stored routes. */
+
+router.delete('/*', function(req, res) {
+  routing(req, res, 'DELETE');
 });
 
 module.exports = router;

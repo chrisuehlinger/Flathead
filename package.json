@@ -23,14 +23,17 @@
     "multer": "^0.1.8",
     "node-uuid": "^1.4.3",
     "object-assign": "^3.0.0",
+    "open": "0.0.5",
     "react": "^0.13.3",
     "react-codemirror": "^0.1.2",
+    "react-inlinesvg": "^0.4.2",
     "react-tap-event-plugin": "^0.1.7",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
+    "browserify-incremental": "^3.0.1",
     "gulp": "~3.8.10",
     "gulp-livereload": "~3.8.0",
     "gulp-nodemon": "~2.0.2",
@@ -39,7 +42,8 @@
     "gulp-util": "^3.0.6",
     "reactify": "^1.1.1",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "xtend": "^4.0.0"
   },
   "browserify": {
     "transform": [

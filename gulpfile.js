@@ -4,7 +4,10 @@ var gulp = require('gulp'),
   livereload = require('gulp-livereload'),
   sass = require('gulp-sass'),
   browserify = require('browserify'),
-  source = require('vinyl-source-stream');
+  browserifyInc = require('browserify-incremental'),
+  xtend = require('xtend'),
+  source = require('vinyl-source-stream')
+  open = require('open');
 
 gulp.task('sass', function () {
   gulp.src('./public/css/*.scss')
@@ -38,9 +41,16 @@ gulp.task('develop', function () {
   });
 });
 
+gulp.task('open', function(){
+  setTimeout(function(){
+    open('http://localhost:3000/admin');
+  }, 6000);
+});
+
 gulp.task('default', [
   'sass',
   'browserify',
   'develop',
-  'watch'
+  'watch',
+  'open'
 ]);

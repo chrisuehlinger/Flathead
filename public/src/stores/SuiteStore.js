@@ -33,7 +33,7 @@ function createNewItem() {
   var suite = {};
   suite.id = uuid.v4();
   suite.name = "New Suite";
-  suite.active = false;
+  suite.active = true;
   suite.routes = [];
   addItem(suite);
 }

@@ -2,8 +2,10 @@
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
   <text style="cursor: move;" xml:space="preserve" text-anchor="left" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="196" id="svg_3" y="144.5" x="-13.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#333" fill="#333">&lt;   &gt;</text>
-  <ellipse ry="75" rx="75" id="svg_1" cy="81" cx="171" stroke-width="9.5" stroke="#333" fill="#efefef"/>
-  <line transform="rotate(-47 171.24999999999997,80.50000000000003) " stroke="#333" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="80.5" x2="248" y1="80.5" x1="94.5" stroke-width="30" fill="none"/>
-  <line stroke="#efefef" transform="rotate(-47 170.3038482666016,81.24816894531253) " stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="81.24817" x2="252.53112" y1="81.24817" x1="88.07656" fill-opacity="null" stroke-opacity="null" stroke-width="10" fill="none"/>
+   <g class="flathead-oculus">
+  <ellipse ry="75" rx="75" id="svg_1" cy="81" cx="176" stroke-width="9.5" stroke="#333" fill="#efefef"/>
+  <line transform="rotate(-47 171.24999999999997,80.50000000000003) " stroke="#333" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="80.5" x2="250" y1="80.5" x1="99.5" stroke-width="30" fill="none"/>
+  <line stroke="#efefef" transform="rotate(-47 170.3038482666016,81.24816894531253) " stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="81.24817" x2="257.53112" y1="81.24817" x1="93.07656" fill-opacity="null" stroke-opacity="null" stroke-width="10" fill="none"/>
+     </g>
  </g>
 </svg>

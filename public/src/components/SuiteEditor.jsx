@@ -6,6 +6,7 @@ const _ = require('lodash');
 const uuid = require('node-uuid');
 
 let {RaisedButton, Toggle, TextField} = mui;
+var Isvg = require('react-inlinesvg');
 
 let SuiteEditor = React.createClass({
   getDefaultProps() {
@@ -191,7 +192,7 @@ let SuiteEditor = React.createClass({
     } else {
       return (
         <div className="suite-editor suite-editor-empty">
-          <img src="/img/logo.svg" />
+          <Isvg src="/img/logo.svg" />
           <h1>FLATHEAD</h1>
         </div>
       );

@@ -43,7 +43,7 @@ gulp.task('develop', function () {
 
 gulp.task('open', function(){
   setTimeout(function(){
-    open('http://localhost:3000/admin');
+    open('http://localhost:3192/admin');
   }, 6000);
 });
 

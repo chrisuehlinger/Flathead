@@ -59,12 +59,7 @@ let RouteEditor = React.createClass({
   },
 
   render() {
-    let responseText;
-    try {
-      responseText = JSON.stringify(JSON.parse(this.state.route.response.content.text), null, 2);
-    } catch(error){
-      responseText = this.state.route.response.content.text;
-    }
+    let responseText = this.state.route.response.content.text;
     
     let options = {
       lineNumbers: true,

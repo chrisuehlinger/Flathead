@@ -80,6 +80,30 @@ let SuiteEditor = React.createClass({
     SuiteActionCreators.updateSuite(newSuite);
   },
   
+  _flattenJSON(){
+    var newSuite = _.cloneDeep(this.state.suite);
+    newSuite.routes.map((route, i) => {
+      try {
+        route.response.content.text = JSON.stringify(JSON.parse(route.response.content.text));
+      } catch (error) {
+        // I guess it wasn't valid JSON
+      }
+    });
+    SuiteActionCreators.updateSuite(newSuite);
+  },
+  
+  _prettyPrintJSON(){
+    var newSuite = _.cloneDeep(this.state.suite);
+    newSuite.routes.map((route, i) => {
+      try {
+        route.response.content.text = JSON.stringify(JSON.parse(route.response.content.text), null, 2);
+      } catch (error) {
+        // I guess it wasn't valid JSON
+      }
+    });
+    SuiteActionCreators.updateSuite(newSuite);
+  },
+  
   _deleteRoute(deletedRoute){
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.routes.map((route, i) => {
@@ -188,7 +212,9 @@ let SuiteEditor = React.createClass({
             <RaisedButton label="Import HAR File" onClick={this._clickFileInput}>
             <input type="file" ref="harInput" style={{display:'none'}} onChange={this._importHAR} accept=".har" />
             </RaisedButton>
-            <RaisedButton label="Remove Duplicates" onClick={this._removeDuplicateRoutes} />
+            <RaisedButton label="Remove Duplicate Routes" onClick={this._removeDuplicateRoutes} />
+            <RaisedButton label="Pretty Print JSON" onClick={this._prettyPrintJSON} />
+            <RaisedButton label="Minify JSON" onClick={this._flattenJSON} />
           </div>
             <ul className="route-list">
             { 

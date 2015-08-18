@@ -78,7 +78,7 @@ let SuiteList = React.createClass({
                 iconClassName="material-icons mui-icon-upload" 
                 tooltip="Import Suite" 
                 onClick={this._clickImportInput}/>
-            <input type="file" ref="importInput" style={{display:'none'}} onChange={this._importNewSuite}/>
+            <input type="file" ref="importInput" style={{display:'none'}} onChange={this._importNewSuite} accept=".flathead.json" />
           </ToolbarGroup>
         </Toolbar>
         <ul className="suite-list">

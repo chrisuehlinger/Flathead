@@ -64,6 +64,22 @@ let SuiteEditor = React.createClass({
     this.setState({suite: newSuite});
   },
   
+  _removeDuplicateRoutes(){
+    var newSuite = _.cloneDeep(this.state.suite);
+    var i,j;
+    for(i = 0; i < newSuite.routes.length; i++){
+      var routeI = newSuite.routes[i];
+      for(j=i+1; j < newSuite.routes.length; j){
+        var routeJ = newSuite.routes[j];
+        if(routeI.request.method === routeJ.request.method && routeI.request.url === routeJ.request.url){
+          newSuite.routes.splice(j,1);
+        } else
+          j++;
+      }
+    }
+    this.setState({suite: newSuite});
+  },
+  
   _deleteRoute(deletedRoute){
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.routes.map((route, i) => {
@@ -169,9 +185,9 @@ let SuiteEditor = React.createClass({
           <div className="suite-editor-buttons">
             <RaisedButton label="Add Route" onClick={this._addRoute} />
             <RaisedButton label="Import HAR File" onClick={this._clickFileInput}>
-            <input type="file" ref="harInput" style={{display:'none'}} onChange={this._importHAR} />
+            <input type="file" ref="harInput" style={{display:'none'}} onChange={this._importHAR} accept=".har" />
             </RaisedButton>
-            
+            <RaisedButton label="Remove Duplicates" onClick={this._removeDuplicateRoutes} />
           </div>
             <ul className="route-list">
             { 

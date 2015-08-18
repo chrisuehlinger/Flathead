@@ -35,19 +35,23 @@ let RouteEditor = React.createClass({
   _changeURL(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.url = event.target.value;
-    this.props.onChange(newRoute);
+    this.setState({route: newRoute});
   },
   
   _changeMethod(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.method = event.target.value;
-    this.props.onChange(newRoute);
+    this.setState({route: newRoute});
   },
   
   _changeResponseText(newResponseText) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.response.content.text = newResponseText;
-    this.props.onChange(newRoute);
+    this.setState({route: newRoute});
+  },
+  
+  _reportChange() {
+    this.props.onChange(this.state.route);
   },
   
   _deleteRoute() {
@@ -86,16 +90,22 @@ let RouteEditor = React.createClass({
         <TextField 
             floatingLabelText="Method" 
             value={this.state.route.request.method}
-            onChange={this._changeMethod}/>
+            onChange={this._changeMethod}
+            onBlur={this._reportChange} />
         <TextField 
             floatingLabelText="URL" 
             ref="urlInput" 
             value={this.state.route.request.url}
             fullWidth={true}
-            onChange={this._changeURL}/>
+            onChange={this._changeURL}
+            onBlur={this._reportChange} />
         <div>
         Response: 
-        <CodeMirror value={responseText} options={options} onChange={this._changeResponseText}/>
+        <CodeMirror 
+            value={responseText} 
+            options={options} 
+            onChange={this._changeResponseText}
+            onBlur={this._reportChange} />
         </div>
       </Paper>
     );

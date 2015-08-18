@@ -28,13 +28,13 @@ let SuiteEditor = React.createClass({
   _changeName(event){
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.name = event.target.value;
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
 
   _changeActive(event, toggled){
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.active = toggled;
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _addRoute(){
@@ -52,7 +52,7 @@ let SuiteEditor = React.createClass({
       }
     };
     newSuite.routes.push(newRoute);
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _changeRoute(newRoute){
@@ -61,7 +61,7 @@ let SuiteEditor = React.createClass({
       if(route.id === newRoute.id)
         newSuite.routes[i] = newRoute;
     });
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _removeDuplicateRoutes(){
@@ -77,7 +77,7 @@ let SuiteEditor = React.createClass({
           j++;
       }
     }
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _deleteRoute(deletedRoute){
@@ -86,7 +86,7 @@ let SuiteEditor = React.createClass({
       if(route.id === deletedRoute.id)
         newSuite.routes.splice(i, 1);
     });
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _clickFileInput(){
@@ -138,7 +138,7 @@ let SuiteEditor = React.createClass({
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.routes = newSuite.routes.concat(parsedHAR);
     console.log('newSuite', newSuite);
-    this.setState({suite: newSuite});
+    SuiteActionCreators.updateSuite(newSuite);
   },
   
   _saveSuite(){
@@ -174,7 +174,8 @@ let SuiteEditor = React.createClass({
                 floatingLabelText="Name" 
                 fullWidth={true}
                 value={this.state.suite.name} 
-                onChange={this._changeName} />
+                onChange={this._changeName} 
+                onBlur={this._saveSuite} />
             <Toggle 
                 label="Active" 
                 defaultToggled={this.state.suite.active} 

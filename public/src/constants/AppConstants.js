@@ -1,4 +1,4 @@
-const keyMirror = require('react/lib/keyMirror');
+const keyMirror = require('key-mirror');
 
 module.exports = {
 

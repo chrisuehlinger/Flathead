@@ -5,7 +5,6 @@ const SuiteStore = require('../stores/SuiteStore');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
 
 var mui = require('material-ui');
-var ThemeManager = new mui.Styles.ThemeManager();
 
 let App = React.createClass({
   getInitialState() {
@@ -13,12 +12,6 @@ let App = React.createClass({
     return {
       suites: [],
       selectedSuiteId: null
-    };
-  },
-  
-  getChildContext() { 
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
     };
   },
 
@@ -48,9 +41,5 @@ let App = React.createClass({
     );
   }
 });
-
-App.childContextTypes = {
-  muiTheme: React.PropTypes.object
-};
 
 module.exports = App;

@@ -56,6 +56,7 @@ let SuiteEditor = React.createClass({
   },
   
   _changeRoute(newRoute){
+  console.log('Changed route', newRoute);
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.routes.map((route, i) => {
       if(route.id === newRoute.id)
@@ -185,7 +186,6 @@ let SuiteEditor = React.createClass({
       return (
         <div className="suite-editor">
           <div className="suite-editor-buttons">
-            <RaisedButton label="Save" onClick={this._saveSuite} />
             <RaisedButton label="Delete" onClick={this._deleteSuite} />
             <RaisedButton 
                 label="Export" 

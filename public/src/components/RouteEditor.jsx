@@ -41,13 +41,14 @@ let RouteEditor = React.createClass({
   _changeMethod(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.method = event.target.value;
-    this.setState({route: newRoute});
+    this.props.onChange(newRoute);
   },
   
   _changeResponseText(newResponseText) {
+  console.log('New Response text', newResponseText);
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.response.content.text = newResponseText;
-    this.setState({route: newRoute});
+    this.props.onChange(newRoute);
   },
   
   _reportChange() {
@@ -92,8 +93,7 @@ let RouteEditor = React.createClass({
             ref="urlInput" 
             value={this.state.route.request.url}
             fullWidth={true}
-            onChange={this._changeURL}
-            onBlur={this._reportChange} />
+            onChange={this._changeURL}/>
         <div>
         Response: 
         <CodeMirror 

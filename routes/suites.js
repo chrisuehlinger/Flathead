@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
 var low = require('lowdb')
-var db = low('db.json', {
+var dbPath = path.resolve(__dirname, '../db.json');
+var db = low(dbPath, {
   async: false
 });
 

@@ -8,6 +8,17 @@ body {
   margin: 0;
 }
 
+@keyframes rotate {
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+.flathead-screwline {
+    transform-origin: center;
+    transform: rotate3d(0, 0, 1, -50deg);
+}
+
 .mui-icon-add-item:before {
   content:"add";
 }

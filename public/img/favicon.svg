@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 161 161" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
+    <g class="flathead-oculus" transform="translate(81,81)">
+        <ellipse ry="75" rx="75" cy="0" cx="0" stroke-width="10" stroke="#333" fill="#fff" />
+        <g class="flathead-screwline" transform="rotate(-45)">
+            <line stroke="#333" stroke-linecap="undefined" stroke-linejoin="undefined" x1="-75" x2="75" y1="0" y2="0" stroke-width="30" fill="none" />
+            <line stroke="#fff" stroke-linecap="undefined" stroke-linejoin="undefined" x1="-81" x2="81" y1="0" y2="0" fill-opacity="null" stroke-width="10" fill="none" />
+        </g>
+    </g>
+</svg>

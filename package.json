@@ -13,6 +13,9 @@
     "flathead": "./bin/flathead"
   },
   "main": "app.js",
+  "engines": {
+    "node": "4.2.2"
+  },
   "scripts": {
     "start": "node ./bin/flathead",
     "install": "gulp heroku:production"

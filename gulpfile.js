@@ -38,7 +38,7 @@ gulp.task('develop', function () {
     setTimeout(function () {
       livereload.changed(__dirname);
     }, 500);
-  });
+  }); 
 });
 
 gulp.task('open', function(){

@@ -55,4 +55,4 @@ gulp.task('default', [
   'open'
 ]);
 
-gulp.task('heroku:production', ['browserify']);
+gulp.task('heroku:production', ['sass', 'browserify']);

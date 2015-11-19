@@ -6,7 +6,7 @@ var gulp = require('gulp'),
   browserify = require('browserify'),
   browserifyInc = require('browserify-incremental'),
   xtend = require('xtend'),
-  source = require('vinyl-source-stream')
+  source = require('vinyl-source-stream'),
   open = require('open');
 
 gulp.task('sass', function () {

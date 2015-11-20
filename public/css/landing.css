@@ -48,16 +48,25 @@ header {
       /* line 32, /Users/Chris/Development/Flathead/public/css/landing.scss */
       header h1 {
         font-size: 48px; } }
+  /* line 48, /Users/Chris/Development/Flathead/public/css/landing.scss */
+  header h2 {
+    padding-bottom: 0;
+    border-bottom: none; }
 
-/* line 49, /Users/Chris/Development/Flathead/public/css/landing.scss */
+/* line 54, /Users/Chris/Development/Flathead/public/css/landing.scss */
+h2 {
+  padding-bottom: 3px;
+  border-bottom: 1px solid #000; }
+
+/* line 60, /Users/Chris/Development/Flathead/public/css/landing.scss */
 .screenshot {
   margin: 30px 10px;
   box-shadow: 0px 0px 10px 5px rgba(100, 100, 100, 0.75); }
-  /* line 54, /Users/Chris/Development/Flathead/public/css/landing.scss */
+  /* line 65, /Users/Chris/Development/Flathead/public/css/landing.scss */
   .screenshot img {
     width: 100%; }
 
-/* line 59, /Users/Chris/Development/Flathead/public/css/landing.scss */
+/* line 70, /Users/Chris/Development/Flathead/public/css/landing.scss */
 .github-ribbon {
   position: fixed;
   top: 0;
@@ -65,7 +74,7 @@ header {
   border: 0;
   z-index: 200; }
   @media screen and (max-width: 600px) {
-    /* line 59, /Users/Chris/Development/Flathead/public/css/landing.scss */
+    /* line 70, /Users/Chris/Development/Flathead/public/css/landing.scss */
     .github-ribbon {
       display: none; } }
 

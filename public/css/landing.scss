@@ -44,7 +44,18 @@ header {
       font-size: 48px;
     }
   }
+  
+  h2 {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
 }
+
+h2 {
+  padding-bottom: 3px;
+  border-bottom: 1px solid #000;
+}
+
 
 .screenshot {
 //  border: 1px solid #333;

@@ -2,7 +2,7 @@ Flathead
 ========
 Backend Mocking for people who dun care how the backend works.
 
-![Screenshot of Flathead](/public/img/flatheadScreenShot.png)
+![Screenshot of Flathead](public/img/flatheadScreenShot.png)
 
 The Problem we're solving
 -------------------------
@@ -14,21 +14,27 @@ In essence, Flathead is a "static backend" that you can configure. The basic ide
 Install
 -------
 
-Requires Node v0.12.4 though you're welcome to try your inferior version. Grab the latest version of npm, just to be safe.
+Flathead is available on npm:
 
-`git clone` the repostiory, go into the directory and type this magic incantation:
+  npm install -g flathead
+  
+Simply type `flathead` in your command line to spin it up. If you followed these instructions exactly, Google Chrome will open up a window with the URL `localhost:3192/admin`; this is where you will configure Flathead. Very good, leave this thing running forever. If for some reason you stop running it, start again soon (You can close/re-open the browser tab if you want to, that's not important).
 
-```
-npm install
-```
+If you want a port that isn't 3192, you can specify it:
 
-To run Flathead, type this:
+  flathead --port 4000
+  
 
-```
-gulp
-```
+Develop
+-------
 
-If you followed these instructions exactly, Google Chrome will open up a window with the URL `localhost:3000/admin`; this is where you will configure Flathead. Very good, leave this thing running forever. If for some reason you stop running it, start again soon (You can close/re-open the browser tab if you want to, that's not important).
+`git clone` the repository, go into the directory and type this magic incantation:
+
+  npm install
+
+To run Flathead in development mode, type this:
+
+  gulp
 
 Routes
 ------

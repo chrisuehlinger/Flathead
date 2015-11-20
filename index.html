@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flathead</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png" />
+  <link rel="stylesheet" href="public/css/landing.css">
+</head>
+
+<body>
+  <article>
+    <header>
+      <svg viewBox="0 0 350 161" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="screwlineGap">
+            <rect x="-81" width="162" y="-80" height="75" fill="#fff" />
+            <rect x="-81" width="162" y="5" height="75" fill="#fff" />
+          </mask>
+        </defs>
+        <g>
+          <text style="cursor: move;" xml:space="preserve" text-anchor="left" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="196" id="svg_3" y="144.5" x="-13.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#333" fill="#333">&lt;&nbsp;&nbsp;&nbsp;&gt;</text>
+          <g class="flathead-oculus" mask="url(#screwlineGap)" transform="translate(176,81) rotate(-50)">
+            <ellipse ry="75" rx="75" id="svg_1" cy="0" cx="0" stroke-width="10" stroke="#333" fill="none" />
+            <g class="flathead-screwline" transform="rotate(-0)">
+              <line stroke="#333" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" x1="-75" x2="75" y1="0" y2="0" stroke-width="30" fill="none" />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <h1>Flathead</h1>
+      <h2>A service mocking tool by <a href="http://chrisuehlinger.com/">Chris Uehlinger</a></h2>
+      <p></p>
+    </header>
+
+    <p>This one goes out to anyone who's had to build, style or test front-end stuff, but been held back by their API. Whether your API is unfinished, persnickity, or generally too polite for your taste, Flathead can help you see what would happen in any scenario, without having to create the data from scratch.</p>
+
+    <p>In essence, Flathead is a "static backend" that you can configure. The basic idea is "I hit this URL with this type of request... and I get that result". That's all there is. You want something more fancy? Go build an actual API. This is for the gunslingers who (for one reason or another) need to get by without one.</p>
+
+    <h2><a id="Install_13"></a>Install</h2>
+
+    <p>Flathead is available on npm:</p>
+
+    <pre><code>npm <span class="hljs-operator"><span class="hljs-keyword">install</span> -<span class="hljs-keyword">g</span> flathead
+</span></code></pre>
+
+    <p>Simply type <code>flathead</code> in your command line to spin it up. If you followed these instructions exactly, Google Chrome will open up a window with the URL <code>localhost:3192/admin</code>; this is where you will configure Flathead. Very good, leave this thing running forever. If for some reason you stop running it, start again soon (You can close/re-open the browser tab if you want to, that’s not important).</p>
+
+    <p>If you want a port that isn’t 3192, you can specify it:</p>
+
+    <pre><code>flathead <span class="hljs-comment">--port 4000</span>
+</code></pre>
+
+    <figure class="screenshot">
+      <a href="public/img/flatheadScreenShot.png">
+        <img src="public/img/flatheadScreenShot.png" alt="Flathead Screenshot" />
+      </a>
+    </figure>
+
+    <h2><a id="Routes_44"></a>Routes</h2>
+
+    <p>In Flathead parlance, a route is a URL, a method (GET, POST, etc.) and a response. If Flathead receives a request with the correct method and URL, it will return the response that you’ve given it. It’s that simple.</p>
+
+    <h2><a id="Suites_49"></a>Suites</h2>
+
+    <p>A Suite is a group of Routes. Generally you want these to be set up so that they will all correspond to a particular use case. Suites that are active are having their routes served by Flathead, Suites that are not active will not have their Routes served up.</p>
+
+    <h3><a id="Creating_a_Suite_by_hand_54"></a>Creating a Suite by hand</h3>
+
+    <p>If you press the “+” icon above the suite list, you’ll create a new API suite. You can change it’s name, whether or not it’s active and also add/change/remove Routes. Make sure to Save changes to a Suite before trying to use any of its Routes.</p>
+
+    <h3><a id="Creating_Routes_by_hand_58"></a>Creating Routes by hand</h3>
+
+    <p>As you can see, you can add and remove Routes pretty easily. When you add a route, you can change the method, URL and response to suit whatever use you need.</p>
+
+    <h3><a id="Creating_Routes_from_an_existing_API_62"></a>Creating Routes from an existing API</h3>
+
+    <p>If the API under test already exists, Hallelujah! Your job is easy!</p>
+
+    <p>Open the Chrome DevTools “Network” pane (you must do this first) and go to the page under test. Interact with the page until it performs the XHR requests you need. Right click on the list of requests and type “Save as HAR with Content”. This will create an HTTP Archive (essentially a JSON file) with all the data/metadata from all the requests made since the pageload.</p>
+
+    <p>Back in Flathead, go to the Suite you’re looking for and click “Import HAR”. Select the .har file to import it. Flathead will remove all requests whose responses do not have a MIME type of <code>application/json</code> leaving only the XHR requests. It will automatically add those to the suite.</p>
+
+    <p>You can edit these Routes just like any other, allowing you to take an existing set of API responses and tweak it to your liking.</p>
+
+    <h3><a id="Send_these_Suites_to_Someone_Else_72"></a>Send these Suites to Someone Else!</h3>
+
+    <p>Flathead suites can be imported/exported using a JSON file format (though heaven help you if you import some arbitrary JSON file). Once you’ve perfected a Suite, click the “Export” button to download it as a “.flathead.json” file. Send that file to anyone who wants to test the scenario you’ve created.</p>
+
+    <p>All they have to do is click the “Import Suite” icon located next to the “Add Suite” icon above the suite list, and they can choose to import the file you’ve sent them.</p>
+
+    <h2><a id="Develop_30"></a>Develop</h2>
+
+    <p><code>git clone</code> the repository, go into the directory and type this magic incantation:</p>
+
+    <pre><code>npm <span class="hljs-keyword">install</span>
+</code></pre>
+
+    <p>To run Flathead in development mode, type this:</p>
+
+    <pre><code><span class="hljs-title">gulp</span></code></pre>
+
+    <p>Flathead is an <a href="http://expressjs.com/">Express</a> app that uses <a href="https://facebook.github.io/react/">React</a> and <a href="https://facebook.github.io/react/">Flux</a> on the front-end. The suites and routes are stored in a flat file database called <a href="https://github.com/typicode/lowdb">lowdb</a>.</p>
+    </code>
+    </pre>
+  </article>
+  <a class="github-ribbon" href="https://github.com/chrisuehlinger/flathead">
+    <img src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png">
+  </a>
+</body>
+
+</html>

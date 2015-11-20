@@ -88,6 +88,11 @@ let RouteEditor = React.createClass({
             value={this.state.route.request.method}
             onChange={this._changeMethod}
             onBlur={this._reportChange} />
+        <RaisedButton
+            label="Test"
+            linkButton={true}
+            target="_blank"
+            href={this.state.route.request.url}/>
         <TextField 
             floatingLabelText="URL" 
             ref="urlInput" 

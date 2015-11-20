@@ -15,7 +15,7 @@
   "main": "app.js",
   "engines": {
     "node": "0.12.7",
-    "npm":"3.4.1"
+    "npm": "3.4.1"
   },
   "scripts": {
     "start": "node ./bin/flathead",
@@ -50,7 +50,8 @@
     "react-dom": "^0.14.2",
     "react-inlinesvg": "^0.4.2",
     "react-tap-event-plugin": "^0.2.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "yargs": "^3.30.0"
   },
   "devDependencies": {
     "babelify": "^6.1.2",

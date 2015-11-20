@@ -122,9 +122,10 @@ body {
     .suite-editor-buttons {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       
       & > div {
-        margin: 0 10px;
+        margin: 10px 10px 0;
       }
     }
     

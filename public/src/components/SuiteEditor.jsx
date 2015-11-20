@@ -212,7 +212,7 @@ let SuiteEditor = React.createClass({
             <RaisedButton label="Import HAR File" onClick={this._clickFileInput}>
             <input type="file" ref="harInput" style={{display:'none'}} onChange={this._importHAR} accept=".har" />
             </RaisedButton>
-            <RaisedButton label="Remove Duplicate Routes" onClick={this._removeDuplicateRoutes} />
+            <RaisedButton label="Remove Duplicates" onClick={this._removeDuplicateRoutes} />
             <RaisedButton label="Pretty Print JSON" onClick={this._prettyPrintJSON} />
             <RaisedButton label="Minify JSON" onClick={this._flattenJSON} />
           </div>

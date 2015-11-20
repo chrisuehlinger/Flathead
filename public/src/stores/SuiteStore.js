@@ -14,6 +14,10 @@ let _data = {
 
 // add private functions to modify data
 function addItem(suite) {
+  suite.id = uuid.v4();
+  suite.routes.forEach(function(route){
+      route.id = uuid.v4();
+  });
   _data.suites.push(suite);
   _data.selectedSuiteId = suite.id;
   

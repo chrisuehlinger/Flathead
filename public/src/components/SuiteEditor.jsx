@@ -115,23 +115,34 @@ let SuiteEditor = React.createClass({
   },
   
   _clickFileInput(){
-    this.refs.harInput.getDOMNode().click();
+    this.refs.harInput.click();
   },
   
   _importHAR(event){
-    console.log('Importing', event.target.files);
     let input = event.target;
+    let files;
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
       alert('The File APIs are not fully supported in this browser.');
       return;
     } else if (!input) {
       alert("Um, couldn't find the fileinput element.");
     } else if (!input.files) {
-      alert("This browser doesn't seem to support the `files` property of file inputs.");
-    } else if (!input.files[0]) {
+        if(input instanceof Array){
+          files = input;
+        } else {
+          console.log(input);
+          alert("This browser doesn't seem to support the `files` property of file inputs.");
+        }
+    } else {
+      files = input.files;
+    }
+    
+    if(!files){
+      console.log('Looks like theres a problem');
+    } else if (!files[0]) {
       alert("Please select a file before clicking 'Load'");               
     } else {
-      let file = input.files[0];
+      let file = files[0];
       let fr = new FileReader();
       fr.onload = this._parseHAR;
       fr.readAsText(file);

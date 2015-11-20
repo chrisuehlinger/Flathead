@@ -17,22 +17,34 @@ let SuiteList = React.createClass({
   },
   
   _clickImportInput(){
-    this.refs.importInput.getDOMNode().click();
+    this.refs.importInput.click();
   },
   
-  _importNewSuite(){
+  _importNewSuite(event){
     let input = event.target;
+    let files = [];
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
       alert('The File APIs are not fully supported in this browser.');
       return;
     } else if (!input) {
       alert("Um, couldn't find the fileinput element.");
     } else if (!input.files) {
-      alert("This browser doesn't seem to support the `files` property of file inputs.");
-    } else if (!input.files[0]) {
+        if(input instanceof Array){
+          files = input;
+        } else {
+          console.log(input);
+          alert("This browser doesn't seem to support the `files` property of file inputs.");
+        }
+    } else {
+      files = input.files;
+    }
+    
+    if(!files){
+      console.log('Looks like theres a problem');
+    } else if (!files[0]) {
       alert("Please select a file before clicking 'Load'");               
     } else {
-      let file = input.files[0];
+      let file = files[0];
       let fr = new FileReader();
       fr.onload = this._parseImportedSuite;
       fr.readAsText(file);
@@ -45,6 +57,8 @@ let SuiteList = React.createClass({
     // TODO: Validate the data better than this
     if(parsedSuite.id && parsedSuite.name && parsedSuite.routes){
       SuiteActionCreators.addSuite(parsedSuite);
+    } else {
+        alert('The JSON file does not validate as a Flathead JSON file.');
     }
     
   },
@@ -78,7 +92,7 @@ let SuiteList = React.createClass({
                 iconClassName="material-icons mui-icon-upload" 
                 tooltip="Import Suite" 
                 onClick={this._clickImportInput}/>
-            <input type="file" ref="importInput" style={{display:'none'}} onChange={this._importNewSuite} accept=".flathead.json" />
+            <input type="file" ref="importInput" style={{display:'none'}} onChange={this._importNewSuite} accept=".json" />
           </ToolbarGroup>
         </Toolbar>
         <ul className="suite-list">

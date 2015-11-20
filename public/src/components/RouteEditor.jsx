@@ -35,7 +35,7 @@ let RouteEditor = React.createClass({
   _changeURL(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.url = event.target.value;
-    this.setState({route: newRoute});
+    this.props.onChange(newRoute);
   },
   
   _changeMethod(event) {
@@ -45,10 +45,12 @@ let RouteEditor = React.createClass({
   },
   
   _changeResponseText(newResponseText) {
-  console.log('New Response text', newResponseText);
-    var newRoute = _.cloneDeep(this.state.route);
-    newRoute.response.content.text = newResponseText;
-    this.props.onChange(newRoute);
+    //console.log('New Response text', newResponseText);
+    if(newResponseText !== this.state.route.response.content.text){
+        var newRoute = _.cloneDeep(this.state.route);
+        newRoute.response.content.text = newResponseText;
+        this.props.onChange(newRoute);
+    }
   },
   
   _reportChange() {

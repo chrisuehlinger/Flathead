@@ -1,7 +1,8 @@
 node_modules/
 public/components
 public/js/app.js
-public/css/*.css
+public/css/style.css
+public/css/codemirror.css
 public/css/*.css.map
 .sass-cache
 db.json

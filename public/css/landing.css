@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400);
+/* line 3, /Users/Chris/Development/Flathead/public/css/landing.scss */
+body {
+  margin: 0;
+  background: #efefef;
+  color: #333;
+  font-family: "Lato", "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+/* line 10, /Users/Chris/Development/Flathead/public/css/landing.scss */
+article {
+  min-height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px; }
+
+/* line 17, /Users/Chris/Development/Flathead/public/css/landing.scss */
+a, a:link, a:visited {
+  color: #333; }
+
+/* line 21, /Users/Chris/Development/Flathead/public/css/landing.scss */
+a:hover {
+  color: #888; }
+
+/* line 25, /Users/Chris/Development/Flathead/public/css/landing.scss */
+header {
+  padding: 30px 0 0;
+  text-align: center; }
+  /* line 28, /Users/Chris/Development/Flathead/public/css/landing.scss */
+  header svg {
+    width: 70%;
+    max-width: 350px; }
+  /* line 32, /Users/Chris/Development/Flathead/public/css/landing.scss */
+  header h1 {
+    font-family: 'Montserrat';
+    font-size: 72px;
+    margin: 0;
+    text-transform: uppercase; }
+    @media screen and (max-width: 500px) {
+      /* line 32, /Users/Chris/Development/Flathead/public/css/landing.scss */
+      header h1 {
+        font-size: 64px; } }
+    @media screen and (max-width: 400px) {
+      /* line 32, /Users/Chris/Development/Flathead/public/css/landing.scss */
+      header h1 {
+        font-size: 56px; } }
+    @media screen and (max-width: 350px) {
+      /* line 32, /Users/Chris/Development/Flathead/public/css/landing.scss */
+      header h1 {
+        font-size: 48px; } }
+
+/* line 49, /Users/Chris/Development/Flathead/public/css/landing.scss */
+.screenshot {
+  margin: 30px 10px;
+  box-shadow: 0px 0px 10px 5px rgba(100, 100, 100, 0.75); }
+  /* line 54, /Users/Chris/Development/Flathead/public/css/landing.scss */
+  .screenshot img {
+    width: 100%; }
+
+/* line 59, /Users/Chris/Development/Flathead/public/css/landing.scss */
+.github-ribbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 200; }
+  @media screen and (max-width: 600px) {
+    /* line 59, /Users/Chris/Development/Flathead/public/css/landing.scss */
+    .github-ribbon {
+      display: none; } }
+
+/*# sourceMappingURL=landing.css.map */

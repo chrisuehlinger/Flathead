@@ -18,8 +18,7 @@
     "npm": "3.4.1"
   },
   "scripts": {
-    "start": "node ./bin/flathead",
-    "install": "npm rebuild node-sass && gulp heroku:production"
+    "start": "node ./bin/flathead"
   },
   "dependencies": {
     "body-parser": "^1.12.4",

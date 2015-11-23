@@ -35,13 +35,13 @@ let RouteEditor = React.createClass({
   _changeURL(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.url = event.target.value;
-    this.props.onChange(newRoute);
+    this.setState({ route: newRoute });
   },
   
   _changeMethod(event) {
     var newRoute = _.cloneDeep(this.state.route);
     newRoute.request.method = event.target.value;
-    this.props.onChange(newRoute);
+    this.setState({ route: newRoute });
   },
   
   _changeResponseText(newResponseText) {
@@ -49,7 +49,7 @@ let RouteEditor = React.createClass({
     if(newResponseText !== this.state.route.response.content.text){
         var newRoute = _.cloneDeep(this.state.route);
         newRoute.response.content.text = newResponseText;
-        this.props.onChange(newRoute);
+        this.setState({ route: newRoute });
     }
   },
   
@@ -90,11 +90,12 @@ let RouteEditor = React.createClass({
             value={this.state.route.request.method}
             onChange={this._changeMethod}
             onBlur={this._reportChange} />
-        <RaisedButton
-            label="Test"
-            linkButton={true}
-            target="_blank"
-            href={this.state.route.request.url}/>
+        {this.state.route.request.method === 'GET' 
+            && <RaisedButton
+                    label="Test"
+                    linkButton={true}
+                    target="_blank"
+                    href={this.state.route.request.url}/>}
         <TextField 
             floatingLabelText="URL" 
             ref="urlInput" 
@@ -107,7 +108,7 @@ let RouteEditor = React.createClass({
             value={responseText} 
             options={options} 
             onChange={this._changeResponseText}
-            onBlur={this._reportChange} />
+            onFocusChange={this._reportChange} />
         </div>
       </Paper>
     );

@@ -28,7 +28,7 @@ let SuiteEditor = React.createClass({
   _changeName(event){
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.name = event.target.value;
-    SuiteActionCreators.updateSuite(newSuite);
+    this.setState({suite: newSuite});
   },
 
   _changeActive(event, toggled){

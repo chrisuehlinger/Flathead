@@ -30,6 +30,8 @@ router.all('/*', function(req, res) {
   if(matchingRoute){
     res.type('json');
     res.send(matchingRoute.response.content.text);
+  } else if(req.originalUrl === '/'){
+    res.redirect('/admin');
   } else {
     res.send('');
   }

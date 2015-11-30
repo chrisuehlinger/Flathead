@@ -2,7 +2,7 @@
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
   <text style="cursor: move;" xml:space="preserve" text-anchor="left" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="196" id="svg_3" y="144.5" x="-13.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#333" fill="#333">&lt;   &gt;</text>
-   <g class="flathead-oculus" transform="translate(176,81)" transform="rotate(-45)">
+   <g class="flathead-oculus" transform="translate(176,81) rotate(-45)">
   <ellipse ry="75" rx="75" id="svg_1" cy="0" cx="0" stroke-width="10" stroke="#333" fill="#efefef"/>
        <g class="flathead-screwline">
   <line stroke="#333" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" x1="-75" x2="75" y1="0" y2="0" stroke-width="30" fill="none"/>

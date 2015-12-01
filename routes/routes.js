@@ -33,7 +33,7 @@ router.all('/*', function(req, res) {
   } else if(req.originalUrl === '/'){
     res.redirect('/admin');
   } else {
-    res.send('');
+    res.send(404);
   }
 });
 

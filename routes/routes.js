@@ -12,6 +12,10 @@ function routing(req,res,method){
 /* GET/POST/PUT/DELETE/etc one of the stored routes. */
 
 router.all('/*', function(req, res) {
+  if(req.method === 'OPTIONS'){
+    res.send(200);
+    return;
+  }
   var db = low(dbPath, {
     async: false
   });

@@ -16,6 +16,7 @@ router.all('/*', function(req, res) {
     res.send(200);
     return;
   }
+  
   var db = low(dbPath, {
     async: false
   });
@@ -24,8 +25,15 @@ router.all('/*', function(req, res) {
   var routes = [];
   suites.forEach(function(suite){
     suite.routes.forEach(function(route){
-      if(route.request.method === req.method && route.request.url === req.originalUrl){
-        routes.push(route);
+      if(route.request.method === req.method) {
+        if(route.request.url.indexOf('*') !== -1){
+          var routeRegex = new RegExp(route.request.url.replace(/\*/g, "[^ ]*"));
+          if(routeRegex.test(route.request.url)){
+              routes.push(route);
+          }
+        } else if(route.request.url === req.originalUrl){
+          routes.push(route);
+        }
       }
     });
   });

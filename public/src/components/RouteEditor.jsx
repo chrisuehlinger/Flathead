@@ -54,6 +54,7 @@ let RouteEditor = React.createClass({
   },
   
   _reportChange() {
+      console.log('Reporting change to:', this.state.route);
     this.props.onChange(this.state.route);
   },
   
@@ -101,7 +102,8 @@ let RouteEditor = React.createClass({
             ref="urlInput" 
             value={this.state.route.request.url}
             fullWidth={true}
-            onChange={this._changeURL}/>
+            onChange={this._changeURL}
+            onBlur={this._reportChange}/>
         <div>
         Response: 
         <CodeMirror 

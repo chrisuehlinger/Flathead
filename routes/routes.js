@@ -27,8 +27,8 @@ router.all('/*', function(req, res) {
     suite.routes.forEach(function(route){
       if(route.request.method === req.method) {
         if(route.request.url.indexOf('*') !== -1){
-          var routeRegex = new RegExp(route.request.url.replace(/\*/g, "[^ ]*"));
-          if(routeRegex.test(route.request.url)){
+          var routeRegex = new RegExp('^' + route.request.url.replace(/\*/g, "[^ ]*") + '$');
+          if(routeRegex.test(req.originalUrl)){
               routes.push(route);
           }
         } else if(route.request.url === req.originalUrl){

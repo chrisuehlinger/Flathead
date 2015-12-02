@@ -1,6 +1,6 @@
 {
   "name": "flathead",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "Chris Uehlinger <chris.uehlinger@gmail.com>",
   "description": "Backend Mocking for people who dun care how the backend works.",
   "license": "MIT",

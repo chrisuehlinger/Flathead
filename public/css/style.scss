@@ -19,6 +19,12 @@ body {
 //    transform: rotate3d(0, 0, 1, -50deg);
 //}
 
+.version-number {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
 .mui-icon-add-item:before {
   content:"add";
 }

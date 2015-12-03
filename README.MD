@@ -54,6 +54,8 @@ If you press the "+" icon above the suite list, you'll create a new API suite. Y
 
 As you can see, you can add and remove Routes pretty easily. When you add a route, you can change the method, URL and response to suit whatever use you need.
 
+As of v1.2.0, you can also create wildcard routes! Any route with a \* will treat that \* as a wildcard and match against any routes that satisfy the regex (Note: full regex functionality is not supported).
+
 ### Creating Routes from an existing API
 
 If the API under test already exists, Hallelujah! Your job is easy!

@@ -23,13 +23,14 @@ router.all('/*', function(req, res) {
   
   var suites = db('suites').where({active: true});
   var routes = [];
+  var routeWildcards = [];
   suites.forEach(function(suite){
     suite.routes.forEach(function(route){
       if(route.request.method === req.method) {
         if(route.request.url.indexOf('*') !== -1){
           var routeRegex = new RegExp('^' + route.request.url.replace(/\*/g, "[^ ]*") + '$');
           if(routeRegex.test(req.originalUrl)){
-              routes.push(route);
+              routeWildcards.push(route);
           }
         } else if(route.request.url === req.originalUrl){
           routes.push(route);
@@ -38,7 +39,7 @@ router.all('/*', function(req, res) {
     });
   });
   
-  var matchingRoute = routes[0];
+  var matchingRoute = routes[0] || routeWildcards[0];
   if(matchingRoute){
     res.type('json');
     res.send(matchingRoute.response.content.text);

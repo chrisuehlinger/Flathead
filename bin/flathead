@@ -2,13 +2,18 @@
 var debug = require('debug')('expressapp');
 var open = require('open');
 var argv = require('yargs').argv;
+var package = require('../package.json');
 
-process.env.NODE_ENV = 'production';
-var app = require('../app');
+if(argv.version || argv.v){
+  console.log('v' + package.version);
+} else {
+  process.env.NODE_ENV = 'production';
+  var app = require('../app');
 
-app.set('port', argv.port || process.env.PORT || 3192);
+  app.set('port', argv.port || process.env.PORT || 3192);
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
-  open('http://localhost:' + app.get('port') + '/admin');
-});
+  var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+    open('http://localhost:' + app.get('port') + '/admin');
+  });
+}

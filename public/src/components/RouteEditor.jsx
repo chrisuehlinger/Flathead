@@ -6,7 +6,7 @@ const _ = require('lodash');
 
 let {
   RaisedButton, 
-  Toggle, 
+  Checkbox, 
   TextField, 
   Paper, 
   IconButton,
@@ -44,6 +44,13 @@ let RouteEditor = React.createClass({
     this.setState({ route: newRoute });
   },
   
+  _changeMirror(event, toggled) {
+    var newRoute = _.cloneDeep(this.state.route);
+    newRoute.response.mirrorRequest = toggled;
+    this.setState({ route: newRoute });
+    this.props.onChange(newRoute);
+  },
+  
   _changeResponseText(newResponseText) {
     //console.log('New Response text', newResponseText);
     if(newResponseText !== this.state.route.response.content.text){
@@ -78,6 +85,7 @@ let RouteEditor = React.createClass({
       { payload: '3', text: 'PUT' },
       { payload: '4', text: 'DELETE' }
     ];
+    
     return (
       <Paper zDepth={2} className="route-editor">
         <div className="delete-button-area">
@@ -105,12 +113,18 @@ let RouteEditor = React.createClass({
             onChange={this._changeURL}
             onBlur={this._reportChange}/>
         <div>
-        Response: 
-        <CodeMirror 
-            value={responseText} 
-            options={options} 
-            onChange={this._changeResponseText}
-            onFocusChange={this._reportChange} />
+        Response:
+        <Checkbox 
+            label="Mirror Request Body" 
+            disabled= {this.state.route.request.method === 'GET'}
+            defaultChecked={this.state.route.response.mirrorRequest} 
+            onCheck={this._changeMirror} />
+        { !this.state.route.response.mirrorRequest &&
+          <CodeMirror 
+              value={responseText} 
+              options={options} 
+              onChange={this._changeResponseText}
+              onFocusChange={this._reportChange} /> }
         </div>
       </Paper>
     );

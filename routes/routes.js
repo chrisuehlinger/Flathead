@@ -42,7 +42,11 @@ router.all('/*', function(req, res) {
   var matchingRoute = routes[0] || routeWildcards[0];
   if(matchingRoute){
     res.type('json');
-    res.send(matchingRoute.response.content.text);
+    if(req.method !== 'GET' && matchingRoute.response.mirrorRequest){
+      res.send(req.body);
+    } else {
+      res.send(matchingRoute.response.content.text);
+    }
   } else if(req.originalUrl === '/'){
     res.redirect('/admin');
   } else {

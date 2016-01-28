@@ -2,7 +2,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 @import "codemirror.scss";
+@import "fullscreen.scss";
+
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;

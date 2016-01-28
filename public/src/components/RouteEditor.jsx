@@ -1,6 +1,7 @@
 const React = require('react');
 const CodeMirror = require('react-codemirror');
 require('codemirror/mode/javascript/javascript.js');
+require('codemirror/addon/display/fullscreen.js');
 const mui = require('material-ui');
 const _ = require('lodash');
 
@@ -76,7 +77,16 @@ let RouteEditor = React.createClass({
       lineNumbers: true,
       mode:{name:"javascript", json:true},
       theme: 'monokai',
-      lineWrapping: true
+      lineWrapping: true,
+      extraKeys: {
+        "F11": function(cm) {
+          console.log('FULLSCREEN', cm.getOption("fullScreen"));
+          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+        },
+        "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        }
+      }
     };
         
     var methods = [

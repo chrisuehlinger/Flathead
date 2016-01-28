@@ -233,7 +233,8 @@ let SuiteEditor = React.createClass({
                 return (
                   <li key={route.id}>
                     <RouteEditor 
-                        route={route} 
+                        route={route}
+                        active={this.state.suite.active}
                         onChange={this._changeRoute}
                         onDelete={this._deleteRoute}/>
                   </li>

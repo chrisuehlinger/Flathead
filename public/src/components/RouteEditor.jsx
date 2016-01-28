@@ -17,7 +17,8 @@ let {
 let RouteEditor = React.createClass({
   getDefaultProps(){
     return { 
-      route: null, 
+      route: null,
+      active: false,
       onChange: function(){},
       onDelete: function(){}
     };
@@ -25,7 +26,9 @@ let RouteEditor = React.createClass({
 
   getInitialState(){
     return { 
-      route: this.props.route 
+      route: this.props.route,
+      active: this.props.active,
+      collapsed: true
     };
   },
   
@@ -61,6 +64,14 @@ let RouteEditor = React.createClass({
     }
   },
   
+  _collapseRoute() {
+    this.setState({collapsed: true});
+  },
+  
+  _expandRoute() {
+    this.setState({collapsed: false});
+  },
+  
   _reportChange() {
       console.log('Reporting change to:', this.state.route);
     this.props.onChange(this.state.route);
@@ -80,7 +91,6 @@ let RouteEditor = React.createClass({
       lineWrapping: true,
       extraKeys: {
         "F11": function(cm) {
-          console.log('FULLSCREEN', cm.getOption("fullScreen"));
           cm.setOption("fullScreen", !cm.getOption("fullScreen"));
         },
         "Esc": function(cm) {
@@ -96,46 +106,77 @@ let RouteEditor = React.createClass({
       { payload: '4', text: 'DELETE' }
     ];
     
+    var buttonStyle = {
+      padding: 0,
+      width: 24,
+      verticalAlign: 'middle'
+    }
+    
     return (
-      <Paper zDepth={2} className="route-editor">
+      <Paper zDepth={2} className={ "route-editor" + (this.state.collapsed ? ' collapsed-route-editor' : '') }>
         <div className="delete-button-area">
           <IconButton 
                 iconClassName="material-icons mui-icon-clear-item" 
                 tooltip="Delete"
                 onClick={this._deleteRoute}/>
         </div>
-        <TextField 
-            floatingLabelText="Method" 
-            value={this.state.route.request.method}
-            onChange={this._changeMethod}
-            onBlur={this._reportChange} />
-        {this.state.route.request.method === 'GET' 
-            && <RaisedButton
-                    label="Test"
-                    linkButton={true}
-                    target="_blank"
-                    href={this.state.route.request.url}/>}
-        <TextField 
-            floatingLabelText="URL" 
-            ref="urlInput" 
-            value={this.state.route.request.url}
-            fullWidth={true}
-            onChange={this._changeURL}
-            onBlur={this._reportChange}/>
-        <div>
-        Response:
-        <Checkbox 
-            label="Mirror Request Body" 
-            disabled= {this.state.route.request.method === 'GET'}
-            defaultChecked={this.state.route.response.mirrorRequest} 
-            onCheck={this._changeMirror} />
-        { !this.state.route.response.mirrorRequest &&
-          <CodeMirror 
-              value={responseText} 
-              options={options} 
-              onChange={this._changeResponseText}
-              onFocusChange={this._reportChange} /> }
+        <div className="collapse-area">
+          { this.state.collapsed 
+              ? <div>
+                  <IconButton 
+                      iconClassName="material-icons mui-icon-add-item" 
+                      tooltip="Expand"
+                      onClick={this._expandRoute}
+                      style={buttonStyle}/>
+                  <span style={ { fontWeight: 'bold', margin: 5} }>{ this.state.route.request.method }</span>
+                  { (this.state.route.request.method === 'GET' && this.state.active)
+                    ? <a target="_blank" href={this.state.route.request.url}>{this.state.route.request.url}</a>
+                    : <span style={ { fontStyle: 'italic' } }>{ this.state.route.request.url }</span>
+                  }
+                </div>
+              : <IconButton 
+                    iconClassName="material-icons mui-icon-remove" 
+                    tooltip="Collapse"
+                    onClick={this._collapseRoute}
+                    style={buttonStyle}/>
+          }
         </div>
+        { !this.state.collapsed &&
+          <div>
+            <TextField 
+                floatingLabelText="Method" 
+                value={this.state.route.request.method}
+                onChange={this._changeMethod}
+                onBlur={this._reportChange} />
+            { (this.state.route.request.method === 'GET' && this.state.active)
+                && <RaisedButton
+                        label="Test"
+                        linkButton={true}
+                        target="_blank"
+                        href={this.state.route.request.url}/>}
+            <TextField 
+                floatingLabelText="URL" 
+                ref="urlInput" 
+                value={this.state.route.request.url}
+                fullWidth={true}
+                onChange={this._changeURL}
+                onBlur={this._reportChange}/>
+            <div>
+            Response:
+            <Checkbox 
+                label="Mirror Request Body" 
+                disabled= {this.state.route.request.method === 'GET'}
+                defaultChecked={this.state.route.response.mirrorRequest} 
+                onCheck={this._changeMirror} />
+            { !this.state.route.response.mirrorRequest &&
+              <CodeMirror 
+                  value={responseText} 
+                  options={options} 
+                  onChange={this._changeResponseText}
+                  onFocusChange={this._reportChange} /> }
+            </div>
+          </div>
+        }
       </Paper>
     );
   }

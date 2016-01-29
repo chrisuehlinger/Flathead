@@ -20,6 +20,7 @@ let RouteEditor = React.createClass({
       route: null,
       active: false,
       onChange: function(){},
+      onCopy: function(){},
       onDelete: function(){}
     };
   },
@@ -33,7 +34,7 @@ let RouteEditor = React.createClass({
   },
   
   componentWillReceiveProps(nextProps) {
-    this.setState({ route: nextProps.route });
+    this.setState({ route: nextProps.route, active: nextProps.active });
   },
   
   _changeURL(event) {
@@ -107,6 +108,11 @@ let RouteEditor = React.createClass({
     ];
     
     var buttonStyle = {
+      verticalAlign: 'middle',
+      margin: 10
+    };
+    
+    var iconButtonStyle = {
       padding: 0,
       width: 24,
       verticalAlign: 'middle'
@@ -127,7 +133,7 @@ let RouteEditor = React.createClass({
                       iconClassName="material-icons mui-icon-add-item" 
                       tooltip="Expand"
                       onClick={this._expandRoute}
-                      style={buttonStyle}/>
+                      style={iconButtonStyle}/>
                   <span style={ { fontWeight: 'bold', margin: 5} }>{ this.state.route.request.method }</span>
                   { (this.state.route.request.method === 'GET' && this.state.active)
                     ? <a target="_blank" href={this.state.route.request.url}>{this.state.route.request.url}</a>
@@ -138,7 +144,7 @@ let RouteEditor = React.createClass({
                     iconClassName="material-icons mui-icon-remove" 
                     tooltip="Collapse"
                     onClick={this._collapseRoute}
-                    style={buttonStyle}/>
+                    style={iconButtonStyle}/>
           }
         </div>
         { !this.state.collapsed &&
@@ -153,7 +159,12 @@ let RouteEditor = React.createClass({
                         label="Test"
                         linkButton={true}
                         target="_blank"
-                        href={this.state.route.request.url}/>}
+                        href={this.state.route.request.url} 
+                        style={buttonStyle} />}
+            <RaisedButton
+                label="Copy"
+                onClick={ this.props.onCopy } 
+                style={buttonStyle} />
             <TextField 
                 floatingLabelText="URL" 
                 ref="urlInput" 

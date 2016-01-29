@@ -56,12 +56,20 @@ let SuiteEditor = React.createClass({
   },
   
   _changeRoute(newRoute){
-  console.log('Changed route', newRoute);
     var newSuite = _.cloneDeep(this.state.suite);
     newSuite.routes.map((route, i) => {
       if(route.id === newRoute.id)
         newSuite.routes[i] = newRoute;
     });
+    SuiteActionCreators.updateSuite(newSuite);
+  },
+  
+  _copyRoute(routeToCopy, routeIndex){
+    var newRoute = _.cloneDeep(routeToCopy);
+    newRoute.id = uuid.v4();
+    var newSuite = _.cloneDeep(this.state.suite);
+    newSuite.routes.splice(routeIndex+1, 0, newRoute);
+    
     SuiteActionCreators.updateSuite(newSuite);
   },
   
@@ -229,14 +237,15 @@ let SuiteEditor = React.createClass({
           </div>
             <ul className="route-list">
             { 
-              this.state.suite.routes.map((route) => {
+              this.state.suite.routes.map((route, i) => {
                 return (
                   <li key={route.id}>
                     <RouteEditor 
                         route={route}
                         active={this.state.suite.active}
                         onChange={this._changeRoute}
-                        onDelete={this._deleteRoute}/>
+                        onDelete={this._deleteRoute}
+                        onCopy={this._copyRoute.bind(this,route,i)}/>
                   </li>
                 );
               }) 

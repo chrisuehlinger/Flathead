@@ -51,7 +51,7 @@ let SuiteEditor = React.createClass({
         }
       }
     };
-    newSuite.routes.push(newRoute);
+    newSuite.routes.unshift(newRoute);
     SuiteActionCreators.updateSuite(newSuite);
   },
   

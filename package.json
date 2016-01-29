@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "node ./bin/flathead",
-    "prepublish": "gulp"
+    "prepublish": "gulp build"
   },
   "dependencies": {
     "body-parser": "^1.12.4",

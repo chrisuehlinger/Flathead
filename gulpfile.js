@@ -47,6 +47,8 @@ gulp.task('open', function(){
   }, 6000);
 });
 
+gulp.task('build', ['sass', 'browserify']);
+
 gulp.task('default', [
   'sass',
   'browserify',

@@ -13,7 +13,7 @@ function routing(req,res,method){
 
 router.all('/*', function(req, res) {
   if(req.method === 'OPTIONS'){
-    res.send(200);
+    res.sendStatus(200);
     return;
   }
   
@@ -39,6 +39,7 @@ router.all('/*', function(req, res) {
     });
   });
   
+  console.log(routes);
   var matchingRoute = routes[0] || routeWildcards[0];
   if(matchingRoute){
     res.type('json');
@@ -50,7 +51,7 @@ router.all('/*', function(req, res) {
   } else if(req.originalUrl === '/'){
     res.redirect('/admin');
   } else {
-    res.send(404);
+    res.sendStatus(404);
   }
 });
 

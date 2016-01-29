@@ -2,7 +2,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 @import "codemirror.scss";
+@import "fullscreen.scss";
+
 body {
   font: 14px "Lato", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
@@ -35,6 +38,10 @@ body {
 
 .mui-icon-clear-item:before {
   content:"clear";
+}
+
+.mui-icon-remove:before {
+  content:"remove";
 }
 
 .wrapper {
@@ -148,6 +155,10 @@ body {
         .route-editor{
           margin: 20px 0;
           padding: 0 20px 20px;
+          
+          &.collapsed-route-editor {
+            padding: 0 20px;
+          }
           
           .delete-button-area {
             float: right;

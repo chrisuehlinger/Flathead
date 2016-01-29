@@ -2,7 +2,7 @@
   "name": "flathead",
   "version": "1.3.0",
   "author": "Chris Uehlinger <chris.uehlinger@gmail.com>",
-  "description": "Backend Mocking for people who dun care how the backend works.",
+  "description": "The right way to screw with your data.",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 Flathead
 ========
-Backend Mocking for people who dun care how the backend works.
+
+The right way to screw with your data!
 
 ![Screenshot of Flathead](public/img/flatheadScreenShot.png)
 

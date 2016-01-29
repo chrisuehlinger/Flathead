@@ -1,6 +1,6 @@
 {
   "name": "flathead",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Chris Uehlinger <chris.uehlinger@gmail.com>",
   "description": "The right way to screw with your data.",
   "license": "MIT",
@@ -18,7 +18,8 @@
     "npm": "3.4.1"
   },
   "scripts": {
-    "start": "node ./bin/flathead"
+    "start": "node ./bin/flathead",
+    "prepublish": "gulp build"
   },
   "dependencies": {
     "body-parser": "^1.12.4",
@@ -57,6 +58,7 @@
     "browserify": "^10.2.4",
     "browserify-incremental": "^3.0.1",
     "gulp": "~3.8.10",
+    "gulp-cli": "^1.1.1",
     "gulp-livereload": "~3.8.0",
     "gulp-nodemon": "~2.0.2",
     "gulp-plumber": "~1.0.0",

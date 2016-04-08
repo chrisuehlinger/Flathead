@@ -1,5 +1,6 @@
 const React = require('react');
 const RouteEditor = require('./RouteEditor.jsx');
+const RouteActionCreators = require('../actions/RouteActionCreators');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
 const mui = require('material-ui');
 const _ = require('lodash');
@@ -51,26 +52,18 @@ let SuiteEditor = React.createClass({
         }
       }
     };
-    newSuite.routes.unshift(newRoute);
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.addRoute(this.state.suite.id, newRoute);
   },
   
   _changeRoute(newRoute){
-    var newSuite = _.cloneDeep(this.state.suite);
-    newSuite.routes.map((route, i) => {
-      if(route.id === newRoute.id)
-        newSuite.routes[i] = newRoute;
-    });
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.updateRoute(this.state.suite.id, newRoute);
   },
   
   _copyRoute(routeToCopy, routeIndex){
     var newRoute = _.cloneDeep(routeToCopy);
     newRoute.id = uuid.v4();
-    var newSuite = _.cloneDeep(this.state.suite);
-    newSuite.routes.splice(routeIndex+1, 0, newRoute);
     
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.addRoute(this.state.suite.id, newRoute, true);
   },
   
   _removeDuplicateRoutes(){
@@ -114,12 +107,7 @@ let SuiteEditor = React.createClass({
   },
   
   _deleteRoute(deletedRoute){
-    var newSuite = _.cloneDeep(this.state.suite);
-    newSuite.routes.map((route, i) => {
-      if(route.id === deletedRoute.id)
-        newSuite.routes.splice(i, 1);
-    });
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.deleteRoute(this.state.suite.id, deletedRoute);
   },
   
   _clickFileInput(){

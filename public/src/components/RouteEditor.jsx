@@ -269,7 +269,7 @@ let RouteEditor = React.createClass({
                   value = { responseText }
                   options = { options }
                   onChange = { this._changeResponseText }
-                  onFocusChange = { this._reportChange } /> }
+                  onFocusChange = { (focused) => !focused && this._reportChange() } /> }
             </div>
           </div>
         }

@@ -53,14 +53,21 @@ router.post('/:suiteId/routes', function(req, res) {
 
 /* PUT a modified route */
 
-router.put('/:suite/routes', function(req, res) {
-//    var modifiedSuite = req.body;
-//    db('suites')
-//      .chain()
-//      .find({ id: modifiedSuite.id })
-//      .assign(modifiedSuite)
-//      .value();
-//    res.send(db('suites'));
+router.put('/:suiteId/routes', function(req, res) {
+    var modifiedRoute = req.body;
+    console.log(modifiedRoute);
+    db('suites')
+      .chain()
+      .find({ id: req.params.suiteId })
+      .get('routes')
+      .find({id: modifiedRoute.id})
+      .assign(modifiedRoute).value();
+  
+  console.log(db('suites')
+      .chain()
+      .find({ id: req.params.suiteId })
+      .get('routes').find({id: modifiedRoute.id}).value());
+    res.send(db('suites'));
 });
 
 /* DELETE a route */

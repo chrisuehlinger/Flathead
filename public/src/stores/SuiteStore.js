@@ -88,10 +88,21 @@ function replaceAll(suites){
 }
 
 function addRoute(suiteId, route) {
-  console.log(suiteId, JSON.stringify(route));
   $.ajax({
     url:'/suites/' + suiteId + '/routes',
     method: 'POST',
+    contentType:'application/json',
+    dataType:'json',
+    data: JSON.stringify(route)
+  }).then(function(data){
+    SuiteActionCreators.replaceAllSuites(data);
+  });
+}
+
+function updateRoute(suiteId, route) {
+  $.ajax({
+    url:'/suites/' + suiteId + '/routes',
+    method: 'PUT',
     contentType:'application/json',
     dataType:'json',
     data: JSON.stringify(route)

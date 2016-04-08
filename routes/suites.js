@@ -3,7 +3,8 @@ var router = express.Router();
 var path = require('path');
 
 var low = require('lowdb')
-var dbPath = path.resolve(__dirname, '../db.json');
+var argv = require('yargs').argv;
+var dbPath = argv.db ? path.resolve(argv.db) : path.resolve(__dirname, '../db.json');
 var db = low(dbPath, {
   async: false
 });

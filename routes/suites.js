@@ -47,7 +47,7 @@ router.delete('/', function(req, res) {
 
 router.post('/:suiteId/routes', function(req, res) {
     console.log(req.body);
-    db('suites').find({id: req.params.suiteId}).routes.push(req.body);
+    db('suites').find({id: req.params.suiteId}).routes.unshift(req.body);
     res.send(db('suites'));
 });
 

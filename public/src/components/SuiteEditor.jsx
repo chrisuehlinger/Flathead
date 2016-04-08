@@ -62,10 +62,8 @@ let SuiteEditor = React.createClass({
   _copyRoute(routeToCopy, routeIndex){
     var newRoute = _.cloneDeep(routeToCopy);
     newRoute.id = uuid.v4();
-    var newSuite = _.cloneDeep(this.state.suite);
-    newSuite.routes.splice(routeIndex+1, 0, newRoute);
     
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.addRoute(this.state.suite.id, newRoute);
   },
   
   _removeDuplicateRoutes(){

@@ -87,9 +87,9 @@ function replaceAll(suites){
     _data.selectedSuiteId = null;
 }
 
-function addRoute(suiteId, route) {
+function addRoute(suiteId, route, isCopy) {
   $.ajax({
-    url:'/suites/' + suiteId + '/routes',
+    url:'/suites/' + suiteId + '/routes?copy=' + isCopy,
     method: 'POST',
     contentType:'application/json',
     dataType:'json',
@@ -183,7 +183,7 @@ let SuiteStore = assign({}, BaseStore, {
         
       case Constants.ActionTypes.ADD_ROUTE:
         if (action.suiteId && action.route) {
-          addRoute(action.suiteId, action.route);
+          addRoute(action.suiteId, action.route, action.isCopy);
           SuiteStore.emitChange();
         }
         break;

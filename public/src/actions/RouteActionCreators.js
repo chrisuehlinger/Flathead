@@ -2,11 +2,12 @@ var AppDispatcher = require('../dispatchers/AppDispatcher');
 var Constants = require('../constants/AppConstants');
 
 module.exports = {
-  addRoute: function(suiteId, route) {
+  addRoute: function(suiteId, route, isCopy = false) {
     AppDispatcher.handleViewAction({
       type: Constants.ActionTypes.ADD_ROUTE,
       suiteId: suiteId,
-      route: route
+      route: route,
+      isCopy: isCopy
     });
   },
   

@@ -9,13 +9,13 @@ var db = low(dbPath, {
   async: false
 });
 
-/* GET a list of all the stored routes */
+/* GET a list of all the stored suites */
 
 router.get('/', function(req, res) {
     res.send(db('suites'));
 });
 
-/* POST a new route */
+/* POST a new suite */
 
 router.post('/', function(req, res) {
     console.log(req.body);
@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
     res.send(db('suites'));
 });
 
-/* PUT a modified route */
+/* PUT a modified suite */
 
 router.put('/', function(req, res) {
     var modifiedSuite = req.body;
@@ -35,12 +35,40 @@ router.put('/', function(req, res) {
     res.send(db('suites'));
 });
 
-/* DELETE a route */
+/* DELETE a suite */
 
 router.delete('/', function(req, res) {
     var modifiedSuite = req.body;
     db('suites').remove({id: modifiedSuite.id});
     res.send(db('suites'));
+});
+
+/* POST a new route */
+
+router.post('/:suiteId/routes', function(req, res) {
+    console.log(req.body);
+    db('suites').find({id: req.params.suiteId}).routes.push(req.body);
+    res.send(db('suites'));
+});
+
+/* PUT a modified route */
+
+router.put('/:suite/routes', function(req, res) {
+//    var modifiedSuite = req.body;
+//    db('suites')
+//      .chain()
+//      .find({ id: modifiedSuite.id })
+//      .assign(modifiedSuite)
+//      .value();
+//    res.send(db('suites'));
+});
+
+/* DELETE a route */
+
+router.delete('/:suite/routes', function(req, res) {
+//    var modifiedSuite = req.body;
+//    db('suites').remove({id: modifiedSuite.id});
+//    res.send(db('suites'));
 });
 
 module.exports = router;

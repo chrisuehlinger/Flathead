@@ -9,7 +9,7 @@ module.exports = {
     UPDATE_SUITE: null,
     DELETE_SUITE: null,
     SELECT_SUITE: null,
-    CREATE_ROUTE: null,
+    ADD_ROUTE: null,
     UPDATE_ROUTE: null,
     DELETE_ROUTE: null
   }),

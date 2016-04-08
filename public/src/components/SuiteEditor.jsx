@@ -1,5 +1,6 @@
 const React = require('react');
 const RouteEditor = require('./RouteEditor.jsx');
+const RouteActionCreators = require('../actions/RouteActionCreators');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
 const mui = require('material-ui');
 const _ = require('lodash');
@@ -51,8 +52,7 @@ let SuiteEditor = React.createClass({
         }
       }
     };
-    newSuite.routes.unshift(newRoute);
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.addRoute(this.state.suite.id, newRoute);
   },
   
   _changeRoute(newRoute){

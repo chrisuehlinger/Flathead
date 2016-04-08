@@ -22,12 +22,6 @@ body {
 //    transform: rotate3d(0, 0, 1, -50deg);
 //}
 
-.version-number {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-}
-
 .mui-icon-add-item:before {
   content:"add";
 }
@@ -42,6 +36,10 @@ body {
 
 .mui-icon-remove:before {
   content:"remove";
+}
+
+.mui-icon-help:before {
+  content:"help";
 }
 
 .line-error{

@@ -2,13 +2,20 @@ const React = require('react');
 const _ = require('lodash');
 const SuiteActionCreators = require('../actions/SuiteActionCreators');
 const mui = require('material-ui');
+const packageJson = require('../../../package.json');
 
-let {Toolbar, ToolbarGroup, ToolbarTitle, IconButton} = mui;
+let {Toolbar, ToolbarGroup, ToolbarTitle, IconButton, FlatButton, Dialog} = mui;
 
 let SuiteList = React.createClass({
   getDefaultProps: function(){
     return {
       suites:[]
+    };
+  },
+  
+  getInitialState() {
+    return {
+      helpPaneOpen: false
     };
   },
   
@@ -74,9 +81,24 @@ let SuiteList = React.createClass({
     newSuite.active = active;
     SuiteActionCreators.updateSuite(newSuite);
   },
+  
+  _openHelpPane() {
+    this.setState({helpPaneOpen: true});
+  },
+
+  _closeHelpPane() {
+    this.setState({helpPaneOpen: false});
+  },
 
   render() {
-    console.log(this.props.suites);
+    console.log('Rendering...', this.props.suites);
+    const actions = [
+      <FlatButton
+        key={5467209}
+        label="Close"
+        onTouchTap={this._closeHelpPane}
+      />
+    ];
     return (
       <div className="suite-list-pane">
         <Toolbar>
@@ -84,6 +106,19 @@ let SuiteList = React.createClass({
             <ToolbarTitle text="API Suites" />
           </ToolbarGroup>
           <ToolbarGroup key={1} float="right">
+            <IconButton 
+                iconClassName="material-icons mui-icon-help" 
+                tooltip="Help"
+                onClick={this._openHelpPane}/>
+            <Dialog
+              title="About Flathead"
+              actions={actions}
+              open={this.state.helpPaneOpen}
+              onRequestClose={this._closeHelpPane}
+            >
+              <strong>Version: { packageJson.version }</strong>
+              <p>Flathead is an MIT Licensed utility for mocking APIs. You can find the source on <a href="https://github.com/chrisuehlinger/Flathead">GitHub</a> and install it with <a href="https://www.npmjs.com/package/flathead">npm</a>.</p>
+            </Dialog>
             <IconButton 
                 iconClassName="material-icons mui-icon-add-item" 
                 tooltip="Add Suite"

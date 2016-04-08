@@ -46,7 +46,7 @@ router.delete('/', function(req, res) {
 /* POST a new route */
 
 router.post('/:suiteId/routes', function(req, res) {
-    console.log(req.body);
+    
     db('suites').find({id: req.params.suiteId}).routes.unshift(req.body);
     res.send(db('suites'));
 });
@@ -55,27 +55,26 @@ router.post('/:suiteId/routes', function(req, res) {
 
 router.put('/:suiteId/routes', function(req, res) {
     var modifiedRoute = req.body;
-    console.log(modifiedRoute);
     db('suites')
       .chain()
       .find({ id: req.params.suiteId })
       .get('routes')
       .find({id: modifiedRoute.id})
       .assign(modifiedRoute).value();
-  
-  console.log(db('suites')
-      .chain()
-      .find({ id: req.params.suiteId })
-      .get('routes').find({id: modifiedRoute.id}).value());
     res.send(db('suites'));
 });
 
 /* DELETE a route */
 
-router.delete('/:suite/routes', function(req, res) {
-//    var modifiedSuite = req.body;
-//    db('suites').remove({id: modifiedSuite.id});
-//    res.send(db('suites'));
+router.delete('/:suiteId/routes', function(req, res) {
+    var modifiedRoute = req.body;
+    db('suites')
+      .chain()
+      .find({ id: req.params.suiteId })
+      .get('routes')
+      .remove({id: modifiedRoute.id})
+      .value();
+    res.send(db('suites'));
 });
 
 module.exports = router;

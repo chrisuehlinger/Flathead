@@ -107,12 +107,7 @@ let SuiteEditor = React.createClass({
   },
   
   _deleteRoute(deletedRoute){
-    var newSuite = _.cloneDeep(this.state.suite);
-    newSuite.routes.map((route, i) => {
-      if(route.id === deletedRoute.id)
-        newSuite.routes.splice(i, 1);
-    });
-    SuiteActionCreators.updateSuite(newSuite);
+    RouteActionCreators.deleteRoute(this.state.suite.id, deletedRoute);
   },
   
   _clickFileInput(){

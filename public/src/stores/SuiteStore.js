@@ -111,6 +111,18 @@ function updateRoute(suiteId, route) {
   });
 }
 
+function deleteRoute(suiteId, route) {
+  $.ajax({
+    url:'/suites/' + suiteId + '/routes',
+    method: 'DELETE',
+    contentType:'application/json',
+    dataType:'json',
+    data: JSON.stringify(route)
+  }).then(function(data){
+    SuiteActionCreators.replaceAllSuites(data);
+  });
+}
+
 // Facebook style store creation.
 let SuiteStore = assign({}, BaseStore, {
 

@@ -6,10 +6,6 @@ var low = require('lowdb');
 var argv = require('yargs').argv;
 var dbPath = argv.db ? path.resolve(argv.db) : path.resolve(__dirname, '../db.json');
 
-function routing(req,res,method){
-
-};
-
 /* GET/POST/PUT/DELETE/etc one of the stored routes. */
 
 router.all('/*', function(req, res) {
@@ -40,7 +36,6 @@ router.all('/*', function(req, res) {
     });
   });
   
-  console.log(routes);
   var matchingRoute = routes[0] || routeWildcards[0];
   if(matchingRoute){
     res.type('json');

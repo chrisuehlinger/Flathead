@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var multer  = require('multer');
+var multer = require('multer');
+var cors = require("cors");
 
 var routes = require('./routes/routes');
 var admin = require('./routes/admin');
@@ -24,12 +25,7 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 // Enable CORS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
